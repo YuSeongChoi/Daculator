@@ -1,0 +1,13 @@
+{
+  "level": 60,
+  "rarity": "Epic",
+  "material": "중갑",
+  "itype": "상의",
+  "attrs": {
+    "strn": 33,
+    "intl": 24,
+    "speed_atk": 1,
+    "vit": 30,
+    "def_ph": 4677
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "혼돈의 종막 - 속죄", "level": 60, "rarity": "Epic", "itype": "머리어깨",
+  "setOf": "all",
+  "content": "오즈마",
+  "attrs": {
+    "dmg_inc": 17
+  },
+  "branch": [
+    {
+      "when": "다른 개막 장착시",
+      "attrs": {
+        "str_inc": 6
+      }
+    },
+    {
+      "when": "다른 개막 끼고 공격시 20초 동안",
+      "attrs": {
+        "speed_move": 5
+      }
+    },
+    {
+      "when": "다른 종막 장착시",
+      "attrs": {
+        "dmg_add": 7
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "level": 60,
+  "rarity": "Epic",
+  "material": "중갑",
+  "itype": "벨트",
+  "attrs": {
+    "strn": 19,
+    "intl": 14,
+    "speed_atk": 1,
+    "vit": 18,
+    "def_ph": 1559
+  }
+}

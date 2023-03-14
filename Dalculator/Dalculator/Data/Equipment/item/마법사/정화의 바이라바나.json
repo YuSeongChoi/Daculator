@@ -1,0 +1,25 @@
+{
+  "name": "정화의 바이라바나",
+  "level": 60,
+  "itype": "창",
+  "rarity": "Epic",
+  "attrs": {
+    "atk_ph": 857,
+    "atk_mg": 527,
+    "strn": 75,
+    "speed_atk": 2,
+    "speed_cast": 3,
+    "AccuPct": 2,
+    "crit_ph_pct": 2,
+    "Accu": 234,
+  
+    "dmg_add": 24,
+    "sk_lv": { "@Mage:Lv1-50": 2 }
+  },
+  "branch": [{
+    "when": "악마/언데드에게",
+    "attrs": {
+      "dmg_add": 5
+    }
+  }]
+}
