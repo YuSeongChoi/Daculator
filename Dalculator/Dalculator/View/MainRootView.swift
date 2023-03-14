@@ -8,7 +8,26 @@
 import SwiftUI
 
 struct MainRootView: View {
+    
+    typealias TabItemType = Constants.HomeTabItem
+    
+    @State private var tabSelection: TabItemType = .home
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView(selection: $tabSelection) {
+            HomeMenuView()
+                .tag(TabItemType.home)
+                .tabItem {
+                    Label("홈", systemImage: "house.fill")
+                }
+            
+            SettingView()
+                .tag(TabItemType.setting)
+                .tabItem {
+                    Label("설정", systemImage: "gearshape")
+                }
+        }.accentColor(.black)
     }
+    
 }
+
