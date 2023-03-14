@@ -14,6 +14,11 @@
 		5DAE0C2B29BFFF0200C323E2 /* DalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C2A29BFFF0200C323E2 /* DalculatorTests.swift */; };
 		5DAE0C3529BFFF0200C323E2 /* DalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C3429BFFF0200C323E2 /* DalculatorUITests.swift */; };
 		5DAE0C3729BFFF0200C323E2 /* DalculatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C3629BFFF0200C323E2 /* DalculatorUITestsLaunchTests.swift */; };
+		5DAE0C4729C00A7600C323E2 /* WindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C4629C00A7600C323E2 /* WindowDelegate.swift */; };
+		5DAE0C4929C00A8000C323E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C4829C00A8000C323E2 /* AppDelegate.swift */; };
+		5DAE0C5029C00DD100C323E2 /* SwiftUI+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C4F29C00DD100C323E2 /* SwiftUI+Resources.swift */; };
+		5DAE0C5329C00F5F00C323E2 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 5DAE0C5229C00F5F00C323E2 /* RswiftLibrary */; };
+		5DAE0C5729C0101000C323E2 /* MainRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C5629C0101000C323E2 /* MainRootView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,10 @@
 		5DAE0C3029BFFF0200C323E2 /* DalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DAE0C3429BFFF0200C323E2 /* DalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DalculatorUITests.swift; sourceTree = "<group>"; };
 		5DAE0C3629BFFF0200C323E2 /* DalculatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DalculatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5DAE0C4629C00A7600C323E2 /* WindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowDelegate.swift; sourceTree = "<group>"; };
+		5DAE0C4829C00A8000C323E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5DAE0C4F29C00DD100C323E2 /* SwiftUI+Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Resources.swift"; sourceTree = "<group>"; };
+		5DAE0C5629C0101000C323E2 /* MainRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DAE0C5329C00F5F00C323E2 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,11 +105,14 @@
 		5DAE0C1729BFFEFF00C323E2 /* Dalculator */ = {
 			isa = PBXGroup;
 			children = (
-				5DAE0C1829BFFEFF00C323E2 /* DalculatorApp.swift */,
-				5DAE0C1A29BFFEFF00C323E2 /* ContentView.swift */,
-				5DAE0C1C29BFFF0200C323E2 /* Assets.xcassets */,
 				5DAE0C1E29BFFF0200C323E2 /* Dalculator.entitlements */,
-				5DAE0C1F29BFFF0200C323E2 /* Preview Content */,
+				5DAE0C4529C008E400C323E2 /* Data */,
+				5DAE0C4329C0083E00C323E2 /* App */,
+				5DAE0C4A29C00D1700C323E2 /* View */,
+				5DAE0C4B29C00D2100C323E2 /* Model */,
+				5DAE0C4D29C00DA000C323E2 /* Extension */,
+				5DAE0C4E29C00DB100C323E2 /* Service */,
+				5DAE0C4429C0087300C323E2 /* Resources */,
 			);
 			path = Dalculator;
 			sourceTree = "<group>";
@@ -129,6 +142,63 @@
 			path = DalculatorUITests;
 			sourceTree = "<group>";
 		};
+		5DAE0C4329C0083E00C323E2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5DAE0C1829BFFEFF00C323E2 /* DalculatorApp.swift */,
+				5DAE0C4829C00A8000C323E2 /* AppDelegate.swift */,
+				5DAE0C4629C00A7600C323E2 /* WindowDelegate.swift */,
+				5DAE0C1A29BFFEFF00C323E2 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5DAE0C4429C0087300C323E2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5DAE0C1C29BFFF0200C323E2 /* Assets.xcassets */,
+				5DAE0C1F29BFFF0200C323E2 /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5DAE0C4529C008E400C323E2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		5DAE0C4A29C00D1700C323E2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAE0C5629C0101000C323E2 /* MainRootView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAE0C4B29C00D2100C323E2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5DAE0C4D29C00DA000C323E2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5DAE0C4F29C00DD100C323E2 /* SwiftUI+Resources.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		5DAE0C4E29C00DB100C323E2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,8 +213,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				5DAE0C5529C00F8400C323E2 /* PBXTargetDependency */,
 			);
 			name = Dalculator;
+			packageProductDependencies = (
+				5DAE0C5229C00F5F00C323E2 /* RswiftLibrary */,
+			);
 			productName = Dalculator;
 			productReference = 5DAE0C1529BFFEFF00C323E2 /* Dalculator.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +291,9 @@
 				Base,
 			);
 			mainGroup = 5DAE0C0C29BFFEFF00C323E2;
+			packageReferences = (
+				5DAE0C5129C00F5F00C323E2 /* XCRemoteSwiftPackageReference "R" */,
+			);
 			productRefGroup = 5DAE0C1629BFFEFF00C323E2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,8 +336,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DAE0C4929C00A8000C323E2 /* AppDelegate.swift in Sources */,
+				5DAE0C4729C00A7600C323E2 /* WindowDelegate.swift in Sources */,
 				5DAE0C1B29BFFEFF00C323E2 /* ContentView.swift in Sources */,
+				5DAE0C5729C0101000C323E2 /* MainRootView.swift in Sources */,
 				5DAE0C1929BFFEFF00C323E2 /* DalculatorApp.swift in Sources */,
+				5DAE0C5029C00DD100C323E2 /* SwiftUI+Resources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +374,10 @@
 			isa = PBXTargetDependency;
 			target = 5DAE0C1429BFFEFF00C323E2 /* Dalculator */;
 			targetProxy = 5DAE0C3129BFFF0200C323E2 /* PBXContainerItemProxy */;
+		};
+		5DAE0C5529C00F8400C323E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 5DAE0C5429C00F8400C323E2 /* RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -414,7 +499,7 @@
 				CODE_SIGN_ENTITLEMENTS = Dalculator/Dalculator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Dalculator/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Dalculator/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = Y3SM86Y3Q4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -429,7 +514,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
@@ -452,7 +537,7 @@
 				CODE_SIGN_ENTITLEMENTS = Dalculator/Dalculator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Dalculator/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Dalculator/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = Y3SM86Y3Q4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -467,7 +552,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
@@ -612,6 +697,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5DAE0C5129C00F5F00C323E2 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5DAE0C5229C00F5F00C323E2 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DAE0C5129C00F5F00C323E2 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+		5DAE0C5429C00F8400C323E2 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5DAE0C0D29BFFEFF00C323E2 /* Project object */;
 }
