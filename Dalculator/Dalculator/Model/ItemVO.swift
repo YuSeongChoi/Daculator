@@ -7,94 +7,62 @@
 
 import Foundation
 
+import CodableWrappers
+
 typealias ItemVO = [ItemVOElement]
 
 // MARK: - ChampionVOElement
 struct ItemVOElement: Codable, Hashable {
-    let name: String
-    let level: Int?
-    let rarity: Rarity?
-    let itype: String
-    let setOf: SetOfUnion?
+    /// 이름
+    @FallbackDecoding<EmptyString>
+    var name: String = ""
+    /// 착용 레벨
+    @FallbackDecoding<EmptyInt>
+    var level: Int = 0
+    /// 희귀도
+    @FallbackDecoding<EmptyString>
+    var rarity: String = ""
+    /// 아이템 타입
+    @FallbackDecoding<EmptyString>
+    var itype: String = ""
+    /// 세트 이름
+    @FallbackDecoding<EmptyArray>
+    var setOf: [String] = []
+    /// 장비 옵션
     let attrs: ChampionVOAttrs
-    let id: Int
-    let image: String
+    /// 장비 아이디
+    @FallbackDecoding<EmptyInt>
+    var id: Int = 0
+    /// 장비 이미지 이름
+    @FallbackDecoding<EmptyString>
+    var image: String = ""
+    /// 공격 옵션 발동 조건 및 효과
     let branch: [Branch]?
+    /// 시너지 옵션 발동 조건 및 효과
     let gives: [Give]?
+    /// 솔라리스 무기 옵션
     let exclusive: [Exclusive]?
-    let content: Content?
-    let who: [Who]?
-    let material: String?
-    let part: [Part]?
-    let artiColor: String?
+    /// 솔라리스 오즈마 환영극단 2막
+    @FallbackDecoding<EmptyString>
+    var content: String = ""
+    /// 윈드시어
+    @FallbackDecoding<EmptyArray>
+    var who: [String] = []
+    /// 재질
+    @FallbackDecoding<EmptyString>
+    var material: String = ""
+    /// 카드 부위
+    @FallbackDecoding<EmptyArray>
+    var part: [String] = []
+    /// 아티팩트 색상
+    @FallbackDecoding<EmptyString>
+    var artiColor: String = ""
 
     enum CodingKeys: String, CodingKey {
         case name, level, rarity, itype, setOf, attrs, id, image, branch, gives, exclusive, content, who, material, part
         case artiColor = "ArtiColor"
     }
     
-    enum Rarity: String, Codable {
-        case epic = "Epic"
-        case rare = "Rare"
-        case uncommon = "Uncommon"
-        case unique = "Unique"
-    }
-    
-    enum Content: String, Codable {
-        case 솔라리스 = "솔라리스"
-        case 오즈마 = "오즈마"
-        case 환영극단2막 = "환영극단 2막"
-    }
-    
-    enum Who: String, Codable {
-        case 윈드시어 = "윈드시어"
-    }
-    
-    enum Part: String, Codable {
-        case 머리어깨 = "머리어깨"
-        case 목걸이 = "목걸이"
-        case 무기 = "무기"
-        case 반지 = "반지"
-        case 벨트 = "벨트"
-        case 보조장비 = "보조장비"
-        case 상의 = "상의"
-        case 신발 = "신발"
-        case 칭호 = "칭호"
-        case 팔찌 = "팔찌"
-        case 하의 = "하의"
-    }
-    
-    enum SetOfUnion: Codable, Hashable {
-        case enumeration(SetOfEnum)
-        case stringArray([String])
-
-        init(from decoder: Decoder) throws {
-            let container = try decoder.singleValueContainer()
-            if let x = try? container.decode([String].self) {
-                self = .stringArray(x)
-                return
-            }
-            if let x = try? container.decode(SetOfEnum.self) {
-                self = .enumeration(x)
-                return
-            }
-            throw DecodingError.typeMismatch(SetOfUnion.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for SetOfUnion"))
-        }
-
-        func encode(to encoder: Encoder) throws {
-            var container = encoder.singleValueContainer()
-            switch self {
-            case .enumeration(let x):
-                try container.encode(x)
-            case .stringArray(let x):
-                try container.encode(x)
-            }
-        }
-        
-        enum SetOfEnum: String, Codable {
-            case all = "all"
-        }
-    }
 }
 
 // MARK: - ChampionVOAttrs

@@ -7,26 +7,67 @@
 
 import SwiftUI
 
+import RswiftResources
+
 struct EquipmentView: View {
     
     @StateObject private var viewModel = EquipmentViewModel()
     
     var body: some View {
         ScrollView {
-            VStack {
-                ForEach(viewModel.championList, id: \.self) { champ in
-                    Image(champ.name)
+            ZStack(alignment: .top) {
+                R.image.bg.swiftImage
+                    .resizable()
+                
+                VStack(spacing: 20) {
+                    if !(viewModel.selectedShoes.isEmpty) {
+                        HStack {
+                            itemImage(imageName: viewModel.selectedShoulder)
+                            Spacer()
+                            itemImage(imageName: viewModel.selectedWeapon)
+                        }
+                        HStack {
+                            itemImage(imageName: viewModel.selectedCoat)
+                            Spacer()
+                            itemImage(imageName: viewModel.selectedNecklace)
+                        }
+                        HStack {
+                            itemImage(imageName: viewModel.selectedPants)
+                            Spacer()
+                            itemImage(imageName: viewModel.selectedBracelet)
+                        }
+                        HStack {
+                            itemImage(imageName: viewModel.selectedBelt)
+                            Spacer()
+                            itemImage(imageName: viewModel.selectedRing)
+                        }
+                        HStack {
+                            itemImage(imageName: viewModel.selectedShoes)
+                            Spacer()
+                            itemImage(imageName: viewModel.selectedSupEquip)
+                        }
+                    }
                 }
-                ForEach(viewModel.itemList, id: \.self) { item in
-                    Image(item.image)
-                }
+                .padding(EdgeInsets(top: 30, leading: 20, bottom: 20, trailing: 20))
             }
-            .frame(maxWidth: .infinity)
         }
         .onAppear {
             viewModel.loadChampionList()
             viewModel.loadItemList()
         }
+    }
+    
+    @ViewBuilder
+    private func itemImage(imageName: String) -> some View {
+        R.image.epicBackground.swiftImage
+            .resizable()
+            .frame(width: 80, height: 80)
+            .overlay(
+                Image(imageName)
+                    .resizable()
+                    .frame(width: 70, height: 70)
+            )
+            .cornerRadius(8)
     }
     
 }

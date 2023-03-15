@@ -25,18 +25,18 @@ struct HomeMenuView: View {
                             selection = tab
                         }
                     } label: {
-                        Color.clear.overlay(
-                            Text(tab.title)
-                        )
+                        if selection == tab {
+                            Color.brown.overlay(
+                                Text(tab.title)
+                            )
+                        } else {
+                            Color.clear.overlay(
+                                Text(tab.title)
+                            )
+                        }
                     }
-                    .foregroundColor(selection == tab ? .black : .gray)
+                    .foregroundColor(selection == tab ? .white : .black)
                     .font(selection == tab ? Font.system(size: 16, weight: .bold) : Font.system(size: 16))
-                    .overlay(
-                        HorizontalUnderLineShape(height: 2)
-                            .padding(.bottom, 1)
-                            .matchedGeometryEffect(id: "underLine", in: nameSpace, properties: .position, anchor: .bottom, isSource: selection == tab)
-                            .animation(.default, value: selection)
-                    )
                 }
             }
             .background(Divider(), alignment: .bottom)
