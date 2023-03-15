@@ -45,6 +45,7 @@ struct EquipmentView: View {
                             itemImage(imageName: viewModel.selectedShoes)
                             Spacer()
                             itemImage(imageName: viewModel.selectedSupEquip)
+                            Spacer()
                         }
                     }
                 }
