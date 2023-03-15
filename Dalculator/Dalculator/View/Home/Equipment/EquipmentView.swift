@@ -12,15 +12,21 @@ struct EquipmentView: View {
     @StateObject private var viewModel = EquipmentViewModel()
     
     var body: some View {
-        VStack {
-            ForEach(viewModel.championList, id: \.self) { champ in
-                Image(champ.name)
+        ScrollView {
+            VStack {
+                ForEach(viewModel.championList, id: \.self) { champ in
+                    Image(champ.name)
+                }
+                ForEach(viewModel.itemList, id: \.self) { item in
+                    Image(item.name)
+                }
             }
+            .frame(maxWidth: .infinity)
         }
         .onAppear {
-            viewModel.loadChampionName(fileName: R.file.dfclassJson.name)
+            viewModel.loadChampionList()
+            viewModel.loadItemList()
         }
-        
     }
     
 }
