@@ -18,7 +18,7 @@ struct EquipmentView: View {
                     Image(champ.name)
                 }
                 ForEach(viewModel.itemList, id: \.self) { item in
-                    Image(item.name)
+                    Image(item.image)
                 }
             }
             .frame(maxWidth: .infinity)

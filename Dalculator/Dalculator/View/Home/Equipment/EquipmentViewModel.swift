@@ -32,7 +32,6 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         switch result {
         case .success(let result):
             itemList = result
-            print(itemList.map(\.setOf))
         case .failure(let failure):
             print(failure.localizedDescription)
         }
