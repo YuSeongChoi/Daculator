@@ -44,6 +44,8 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         switch result {
         case .success(let result):
             championList = result
+            guard let job = championList.filter{ $0.name == "소드마스터" }.first else { return }
+            selectedJob = job.name
         case .failure(let failure):
             print(failure.localizedDescription)
         }

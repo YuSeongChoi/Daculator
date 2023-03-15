@@ -34,6 +34,12 @@ struct EquipmentView: View {
                         HStack {
                             itemImage(imageName: viewModel.selectedPants)
                             Spacer()
+                            Button {
+                                // TODO: 직업 선택
+                            } label: {
+                                Image(viewModel.selectedJob)
+                            }
+                            Spacer()
                             itemImage(imageName: viewModel.selectedBracelet)
                         }
                         HStack {
@@ -45,7 +51,6 @@ struct EquipmentView: View {
                             itemImage(imageName: viewModel.selectedShoes)
                             Spacer()
                             itemImage(imageName: viewModel.selectedSupEquip)
-                            Spacer()
                         }
                     }
                 }
@@ -60,15 +65,19 @@ struct EquipmentView: View {
     
     @ViewBuilder
     private func itemImage(imageName: String) -> some View {
-        R.image.epicBackground.swiftImage
-            .resizable()
-            .frame(width: 80, height: 80)
-            .overlay(
-                Image(imageName)
-                    .resizable()
-                    .frame(width: 70, height: 70)
-            )
-            .cornerRadius(8)
+        Button {
+            // TODO: 아이템 선택
+        } label: {
+            R.image.epicBackground.swiftImage
+                .resizable()
+                .frame(width: 80, height: 80)
+                .overlay(
+                    Image(imageName)
+                        .resizable()
+                        .frame(width: 70, height: 70)
+                )
+                .cornerRadius(8)
+        }
     }
     
 }
