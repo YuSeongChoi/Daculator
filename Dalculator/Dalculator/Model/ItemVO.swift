@@ -20,8 +20,7 @@ struct ItemVOElement: Codable, Hashable {
     @FallbackDecoding<EmptyInt>
     var level: Int = 0
     /// 희귀도
-    @FallbackDecoding<EmptyString>
-    var rarity: String = ""
+    var rarity: ItemRarityType?
     /// 아이템 타입
     @FallbackDecoding<EmptyString>
     var itype: String = ""
@@ -61,6 +60,13 @@ struct ItemVOElement: Codable, Hashable {
     enum CodingKeys: String, CodingKey {
         case name, level, rarity, itype, setOf, attrs, id, image, branch, gives, exclusive, content, who, material, part
         case artiColor = "ArtiColor"
+    }
+    
+    enum ItemRarityType: String, Codable {
+        case epic = "Epic"
+        case unique = "Unique"
+        case rare = "Rare"
+        case uncommon = "Uncommon"
     }
     
 }

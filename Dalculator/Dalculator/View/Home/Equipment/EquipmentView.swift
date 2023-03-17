@@ -14,6 +14,7 @@ struct EquipmentView: View {
     @StateObject private var viewModel = EquipmentViewModel()
     
     @State private var jobToggle: Bool = false
+    @State private var itemToggle: Bool = false
     
     let columns: [GridItem] = [GridItem(.adaptive(minimum: 80))]
     
@@ -80,18 +81,27 @@ struct EquipmentView: View {
                     }
                 }
                 .padding(EdgeInsets(top: 30, leading: 20, bottom: 20, trailing: 20))
+                .background(Group {
+                    NavigationLink(isActive: $itemToggle) {
+                        ItemListView(viewModel: viewModel)
+                    } label: {
+                        EmptyView()
+                    }
+
+                })
             }
         }
         .onAppear {
             viewModel.loadChampionList()
             viewModel.loadItemList()
+            viewModel.loadItemSetList()
         }
     }
     
     @ViewBuilder
     private func itemImage(imageName: String) -> some View {
         Button {
-            // TODO: 아이템 선택
+            itemToggle.toggle()
         } label: {
             R.image.epicBackground.swiftImage
                 .resizable()

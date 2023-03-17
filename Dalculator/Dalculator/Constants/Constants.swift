@@ -52,3 +52,55 @@ enum Constants {
     }
     
 }
+
+extension Constants {
+    
+    enum EquipmentType: String {
+        /// 머리어깨
+        case shoulder
+        /// 상의
+        case coat
+        /// 하의
+        case pants
+        /// 벨트
+        case belt
+        /// 신발
+        case shoes
+        /// 무기
+        case weapon
+        /// 목걸이
+        case necklace
+        /// 팔찌
+        case bracelet
+        /// 반지
+        case ring
+        /// 보조장비
+        case supequip
+        
+        var title: String {
+            switch self {
+            case .shoulder:
+                return "머리어깨"
+            case .coat:
+                return "상의"
+            case .pants:
+                return "하의"
+            case .belt:
+                return "벨트"
+            case .shoes:
+                return "신발"
+            case .weapon:
+                return "무기"
+            case .necklace:
+                return "목걸이"
+            case .bracelet:
+                return "팔찌"
+            case .ring:
+                return "반지"
+            case .supequip:
+                return "보조장비"
+            }
+        }
+    }
+    
+}

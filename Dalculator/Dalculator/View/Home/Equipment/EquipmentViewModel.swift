@@ -14,6 +14,7 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     
     @Published var championList: ChampionVO = []
     @Published var itemList: ItemVO = []
+    @Published var itemSetList: ItemSetVO = []
     
     /// 직업
     @Published var selectedJob: String = ""
@@ -38,6 +39,8 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     /// 보조장비
     @Published var selectedSupEquip: String = ""
     
+    var itemDict = Dictionary<String, [ItemVOElement]>()
+    
     func loadChampionList() {
         guard let data = FileLoader.load(file: R.file.dfclassJson.name) else { return }
         let result = FileLoader.decode(ChampionVO.self, data: data)
@@ -57,52 +60,78 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         switch result {
         case .success(let result):
             itemList = result
-            var equipment: [ItemVOElement] = []
+            initDefaultItem()
+            
             itemList.forEach { item in
-                if let setName = item.setOf.first {
-                    if setName.contains("예언자") || setName.contains("새벽") {
-                        equipment.append(item)
-                    }
+                guard let setName = item.setOf.first else { return }
+                
+                if itemDict[setName] == nil {
+                    itemDict[setName] = []
+                    itemDict[setName]?.append(item)
                 } else {
-                    if item.name.contains("브왕가") || item.name.contains("혼철") {
-                        equipment.append(item)
-                    }
-                }
-            }
-            equipment.forEach { item in
-                if item.itype == "머리어깨" {
-                    selectedShoulder = item.image
-                }
-                if item.itype == "상의" {
-                    selectedCoat = item.image
-                }
-                if item.itype == "하의" {
-                    selectedPants = item.image
-                }
-                if item.itype == "벨트" {
-                    selectedBelt = item.image
-                }
-                if item.itype == "신발" {
-                    selectedShoes = item.image
-                }
-                if item.itype == "도" {
-                    selectedWeapon = item.image
-                }
-                if item.itype == "목걸이" {
-                    selectedNecklace = item.image
-                }
-                if item.itype == "팔찌" {
-                    selectedBracelet = item.image
-                }
-                if item.itype == "반지" {
-                    selectedRing = item.image
-                }
-                if item.itype == "보조장비" {
-                    selectedSupEquip = item.image
+                    itemDict[setName]?.append(item)
                 }
             }
         case .failure(let failure):
             print(failure.localizedDescription)
+        }
+    }
+    
+    func loadItemSetList() {
+        guard let data = FileLoader.load(file: R.file.itemsetsJson.name) else { return }
+        let result = FileLoader.decode(ItemSetVO.self, data: data)
+        switch result {
+        case .success(let result):
+            itemSetList = result
+        case .failure(let failure):
+            print(failure.localizedDescription)
+        }
+    }
+    
+    func initDefaultItem() {
+        var equipment: [ItemVOElement] = []
+        itemList.forEach { item in
+            if let setName = item.setOf.first {
+                if setName.contains("예언자") || setName.contains("새벽") {
+                    equipment.append(item)
+                }
+            } else {
+                if item.name.contains("브왕가") || item.name.contains("혼철") {
+                    equipment.append(item)
+                }
+            }
+        }
+        equipment.forEach { item in
+            if item.itype == "머리어깨" {
+                selectedShoulder = item.image
+            }
+            if item.itype == "상의" {
+                selectedCoat = item.image
+            }
+            if item.itype == "하의" {
+                selectedPants = item.image
+            }
+            if item.itype == "벨트" {
+                selectedBelt = item.image
+            }
+            if item.itype == "신발" {
+                selectedShoes = item.image
+            }
+            if item.itype == "도" {
+                selectedWeapon = item.image
+            }
+            if item.itype == "목걸이" {
+                selectedNecklace = item.image
+            }
+            if item.itype == "팔찌" {
+                selectedBracelet = item.image
+            }
+            if item.itype == "반지" {
+                selectedRing = item.image
+            }
+            if item.itype == "보조장비" {
+                selectedSupEquip = item.image
+            }
         }
     }
     
