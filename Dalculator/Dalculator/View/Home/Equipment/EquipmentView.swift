@@ -13,6 +13,10 @@ struct EquipmentView: View {
     
     @StateObject private var viewModel = EquipmentViewModel()
     
+    @State private var jobToggle: Bool = false
+    
+    let columns: [GridItem] = [GridItem(.adaptive(minimum: 80))]
+    
     var body: some View {
         ScrollView {
             ZStack(alignment: .top) {
@@ -35,9 +39,30 @@ struct EquipmentView: View {
                             itemImage(imageName: viewModel.selectedPants)
                             Spacer()
                             Button {
-                                // TODO: 직업 선택
+                                jobToggle.toggle()
                             } label: {
                                 Image(viewModel.selectedJob)
+                            }
+                            .fullScreenCover(isPresented: $jobToggle) {
+                                FullScreenContentView {
+                                    VStack(alignment: .leading) {
+                                        Text("직업 선택")
+                                            .font(.system(size: 24, weight: .bold))
+                                        Divider()
+                                        ScrollView {
+                                            LazyVGrid(columns: columns) {
+                                                ForEach(viewModel.championList, id: \.self) { champion in
+                                                    Button {
+                                                        viewModel.selectedJob = champion.name
+                                                        jobToggle.toggle()
+                                                    } label: {
+                                                        Image(champion.name)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                             Spacer()
                             itemImage(imageName: viewModel.selectedBracelet)

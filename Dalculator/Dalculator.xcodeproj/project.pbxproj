@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D834EEC29C1876F000B1FBB /* CodableWrappers in Frameworks */ = {isa = PBXBuildFile; productRef = 5D834EEB29C1876F000B1FBB /* CodableWrappers */; };
+		5DABFBC429C4007E0062D867 /* SwiftUI+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABFBC329C4007E0062D867 /* SwiftUI+View.swift */; };
 		5DAE0C1929BFFEFF00C323E2 /* DalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C1829BFFEFF00C323E2 /* DalculatorApp.swift */; };
 		5DAE0C1B29BFFEFF00C323E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C1A29BFFEFF00C323E2 /* ContentView.swift */; };
 		5DAE0C1D29BFFF0200C323E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DAE0C1C29BFFF0200C323E2 /* Assets.xcassets */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5DABFBC329C4007E0062D867 /* SwiftUI+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+View.swift"; sourceTree = "<group>"; };
 		5DAE0C1529BFFEFF00C323E2 /* Dalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DAE0C1829BFFEFF00C323E2 /* DalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DalculatorApp.swift; sourceTree = "<group>"; };
 		5DAE0C1A29BFFEFF00C323E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				5DAE141B29C0350C00C323E2 /* ShapeStyle.swift */,
 				5DAE143629C04B3C00C323E2 /* FileLoader.swift */,
 				5DAE144029C157BD00C323E2 /* Convenience.swift */,
+				5DABFBC329C4007E0062D867 /* SwiftUI+View.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				5DAE143B29C05E9800C323E2 /* ItemVO.swift in Sources */,
 				5DAE140229C015DD00C323E2 /* HomeMenuView.swift in Sources */,
 				5DAE0C1929BFFEFF00C323E2 /* DalculatorApp.swift in Sources */,
+				5DABFBC429C4007E0062D867 /* SwiftUI+View.swift in Sources */,
 				5DAE142129C0367400C323E2 /* BlacksmithView.swift in Sources */,
 				5DAE0C5029C00DD100C323E2 /* SwiftUI+Resources.swift in Sources */,
 				5DAE140529C0160000C323E2 /* Constants.swift in Sources */,
