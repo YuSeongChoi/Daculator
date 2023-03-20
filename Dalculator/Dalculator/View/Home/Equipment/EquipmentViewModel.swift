@@ -59,12 +59,16 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         let result = FileLoader.decode(ItemVO.self, data: data)
         switch result {
         case .success(let result):
+            itemList.removeAll()
+            itemDict.removeAll()
             itemList = result
             initDefaultItem()
             
             itemList.forEach { item in
                 guard let setName = item.setOf.first else { return }
-                
+                if item.rarity != .epic || item.content == .illusion || item.itype == .sealstone || item.itype == .essence || item.itype == .creature {
+                    return
+                }
                 if itemDict[setName] == nil {
                     itemDict[setName] = []
                     itemDict[setName]?.append(item)
@@ -102,34 +106,34 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
             }
         }
         equipment.forEach { item in
-            if item.itype == "머리어깨" {
+            if item.itype == .shoulder {
                 selectedShoulder = item.image
             }
-            if item.itype == "상의" {
+            if item.itype == .coat {
                 selectedCoat = item.image
             }
-            if item.itype == "하의" {
+            if item.itype == .pants {
                 selectedPants = item.image
             }
-            if item.itype == "벨트" {
+            if item.itype == .belt {
                 selectedBelt = item.image
             }
-            if item.itype == "신발" {
+            if item.itype == .shoes {
                 selectedShoes = item.image
             }
-            if item.itype == "도" {
+            if item.itype == .sword {
                 selectedWeapon = item.image
             }
-            if item.itype == "목걸이" {
+            if item.itype == .necklace {
                 selectedNecklace = item.image
             }
-            if item.itype == "팔찌" {
+            if item.itype == .bracelet {
                 selectedBracelet = item.image
             }
-            if item.itype == "반지" {
+            if item.itype == .ring {
                 selectedRing = item.image
             }
-            if item.itype == "보조장비" {
+            if item.itype == .supequip {
                 selectedSupEquip = item.image
             }
         }

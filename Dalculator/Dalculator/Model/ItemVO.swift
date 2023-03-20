@@ -22,8 +22,7 @@ struct ItemVOElement: Codable, Hashable {
     /// 희귀도
     var rarity: ItemRarityType?
     /// 아이템 타입
-    @FallbackDecoding<EmptyString>
-    var itype: String = ""
+    var itype: ItemType?
     /// 세트 이름
     @FallbackDecoding<EmptyArray>
     var setOf: [String] = []
@@ -42,8 +41,7 @@ struct ItemVOElement: Codable, Hashable {
     /// 솔라리스 무기 옵션
     let exclusive: [Exclusive]?
     /// 솔라리스 오즈마 환영극단 2막
-    @FallbackDecoding<EmptyString>
-    var content: String = ""
+    var content: ItemContentType?
     /// 윈드시어
     @FallbackDecoding<EmptyArray>
     var who: [String] = []
@@ -67,6 +65,12 @@ struct ItemVOElement: Codable, Hashable {
         case unique = "Unique"
         case rare = "Rare"
         case uncommon = "Uncommon"
+    }
+    
+    enum ItemContentType: String, Codable {
+        case solaris = "솔라리스"
+        case ozma = "오즈마"
+        case illusion = "환영극단 2막"
     }
     
 }
@@ -216,4 +220,155 @@ struct ChildAttrs: Codable, Hashable {
 struct Give: Codable, Hashable {
     let attrs: [String: Int]
     let when: String?
+}
+
+enum ItemType: String, Codable {
+    /// 머리어깨
+    case shoulder = "머리어깨"
+    /// 상의
+    case coat = "상의"
+    /// 하의
+    case pants = "하의"
+    /// 벨트
+    case belt = "벨트"
+    /// 신발
+    case shoes = "신발"
+    /// 목걸이
+    case necklace = "목걸이"
+    /// 팔찌
+    case bracelet = "팔찌"
+    /// 반지
+    case ring = "반지"
+    /// 보조장비
+    case supequip = "보조장비"
+    /// 칭호
+    case title = "칭호"
+    /// 크리쳐
+    case creature = "크리쳐"
+    /// 봉인석
+    case sealstone = "봉인석"
+    /// 정수
+    case essence = "정수"
+    /// 카드
+    case card = "카드"
+    /// 아티팩트
+    case artifact = "아티팩트"
+    /// 무기아바타
+    case weaponavavtar = "무기아바타"
+    /// 오라
+    case ora = "오라"
+    
+    /// 건틀릿
+    case gauntlet = "건틀릿"
+    /// 너클
+    case nuckle = "너클"
+    /// 광검
+    case lightsword = "광검"
+    /// 대검
+    case bigsword = "대검"
+    /// 소검
+    case smallsword = "소검"
+    /// 도
+    case sword = "도"
+    /// 둔기
+    case bluntsword = "둔기"
+    /// 권투글러브
+    case glove = "권투글러브"
+    /// 클로
+    case claw = "클로"
+    /// 통파
+    case tonpa = "통파"
+    /// 리볼버
+    case revolver = "리볼버"
+    /// 머스켓
+    case muscket = "머스켓"
+    /// 보우건
+    case bowgun = "보우건"
+    /// 핸드캐넌
+    case handcannon = "핸드캐넌"
+    /// 자동권총
+    case autogun = "자동권총"
+    /// 낫
+    case sickle = "낫"
+    /// 배틀액스
+    case battleaxe = "배틀액스"
+    /// 십자가
+    case cross = "십자가"
+    /// 염주
+    case rosary = "염주"
+    /// 토템
+    case totem = "토템"
+    /// 로드
+    case lord = "로드"
+    /// 봉
+    case pole = "봉"
+    /// 스태프
+    case staff = "스태프"
+    /// 스탭
+    case stab = "스탭"
+    /// 빗자루
+    case broom = "빗자루"
+    /// 창
+    case spear = "창"
+    /// 락소드
+    case rocksword = "락소드"
+    /// 윙블레이드
+    case wingblade = "윙블레이드"
+}
+
+enum WeaponType: String {
+    /// 건틀릿
+    case gauntlet = "건틀릿"
+    /// 너클
+    case nuckle = "너클"
+    /// 광검
+    case lightsword = "광검"
+    /// 대검
+    case bigsword = "대검"
+    /// 소검
+    case smallsword = "소검"
+    /// 도
+    case sword = "도"
+    /// 둔기
+    case bluntsword = "둔기"
+    /// 권투글러브
+    case glove = "권투글러브"
+    /// 클로
+    case claw = "클로"
+    /// 통파
+    case tonpa = "통파"
+    /// 리볼버
+    case revolver = "리볼버"
+    /// 머스켓
+    case muscket = "머스켓"
+    /// 보우건
+    case bowgun = "보우건"
+    /// 핸드캐넌
+    case handcannon = "핸드캐넌"
+    /// 자동권총
+    case autogun = "자동권총"
+    /// 낫
+    case sickle = "낫"
+    /// 배틀액스
+    case battleaxe = "배틀액스"
+    /// 십자가
+    case cross = "십자가"
+    /// 염주
+    case rosary = "염주"
+    /// 토템
+    case totem = "토템"
+    /// 로드
+    case lord = "로드"
+    /// 봉
+    case pole = "봉"
+    /// 스태프
+    case staff = "스태프"
+    /// 빗자루
+    case broom = "빗자루"
+    /// 창
+    case spear = "창"
+    /// 락소드
+    case rocksword = "락소드"
+    /// 윙블레이드
+    case wingblade = "윙블레이드"
 }

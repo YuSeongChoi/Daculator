@@ -26,11 +26,10 @@ struct ItemListView: View {
                                     Image(item.image)
                                         .cornerRadius(12)
                                     Text(item.name)
+                                        .frame(width: 50)
                                         .font(.system(size: 10))
                                         .foregroundColor(.gray)
-                                        .allowsTightening(true)
                                 }
-                                .frame(idealWidth: 50)
                                 .multilineTextAlignment(.center)
                             }
                         }

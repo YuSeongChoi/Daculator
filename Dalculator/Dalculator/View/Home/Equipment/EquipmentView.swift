@@ -84,6 +84,7 @@ struct EquipmentView: View {
                 .background(Group {
                     NavigationLink(isActive: $itemToggle) {
                         ItemListView(viewModel: viewModel)
+                            .navigationTitle("장비 선택")
                     } label: {
                         EmptyView()
                     }
