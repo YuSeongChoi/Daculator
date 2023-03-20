@@ -27,17 +27,17 @@ struct EquipmentView: View {
                 VStack(spacing: 20) {
                     if !(viewModel.selectedShoes.isEmpty) {
                         HStack {
-                            itemImage(imageName: viewModel.selectedShoulder)
+                            itemImage(imageName: viewModel.selectedShoulder, itemType: .shoulder)
                             Spacer()
-                            itemImage(imageName: viewModel.selectedWeapon)
+                            itemImage(imageName: viewModel.selectedWeapon, itemType: .sword)
                         }
                         HStack {
-                            itemImage(imageName: viewModel.selectedCoat)
+                            itemImage(imageName: viewModel.selectedCoat, itemType: .coat)
                             Spacer()
-                            itemImage(imageName: viewModel.selectedNecklace)
+                            itemImage(imageName: viewModel.selectedNecklace, itemType: .necklace)
                         }
                         HStack {
-                            itemImage(imageName: viewModel.selectedPants)
+                            itemImage(imageName: viewModel.selectedPants, itemType: .pants)
                             Spacer()
                             Button {
                                 jobToggle.toggle()
@@ -66,17 +66,17 @@ struct EquipmentView: View {
                                 }
                             }
                             Spacer()
-                            itemImage(imageName: viewModel.selectedBracelet)
+                            itemImage(imageName: viewModel.selectedBracelet, itemType: .bracelet)
                         }
                         HStack {
-                            itemImage(imageName: viewModel.selectedBelt)
+                            itemImage(imageName: viewModel.selectedBelt, itemType: .belt)
                             Spacer()
-                            itemImage(imageName: viewModel.selectedRing)
+                            itemImage(imageName: viewModel.selectedRing, itemType: .ring)
                         }
                         HStack {
-                            itemImage(imageName: viewModel.selectedShoes)
+                            itemImage(imageName: viewModel.selectedShoes, itemType: .shoes)
                             Spacer()
-                            itemImage(imageName: viewModel.selectedSupEquip)
+                            itemImage(imageName: viewModel.selectedSupEquip, itemType: .supequip)
                         }
                     }
                 }
@@ -88,7 +88,6 @@ struct EquipmentView: View {
                     } label: {
                         EmptyView()
                     }
-
                 })
             }
         }
@@ -100,8 +99,9 @@ struct EquipmentView: View {
     }
     
     @ViewBuilder
-    private func itemImage(imageName: String) -> some View {
+    private func itemImage(imageName: String, itemType: ItemType) -> some View {
         Button {
+            viewModel.settingItemType(type: itemType)
             itemToggle.toggle()
         } label: {
             R.image.epicBackground.swiftImage

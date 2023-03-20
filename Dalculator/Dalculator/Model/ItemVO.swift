@@ -222,7 +222,7 @@ struct Give: Codable, Hashable {
     let when: String?
 }
 
-enum ItemType: String, Codable {
+enum ItemType: String, Codable, CaseIterable {
     /// 머리어깨
     case shoulder = "머리어깨"
     /// 상의
@@ -316,7 +316,7 @@ enum ItemType: String, Codable {
     case wingblade = "윙블레이드"
 }
 
-enum WeaponType: String {
+enum WeaponType: String, CaseIterable {
     /// 건틀릿
     case gauntlet = "건틀릿"
     /// 너클
@@ -363,6 +363,8 @@ enum WeaponType: String {
     case pole = "봉"
     /// 스태프
     case staff = "스태프"
+    /// 스탭
+    case stab = "스탭"
     /// 빗자루
     case broom = "빗자루"
     /// 창
