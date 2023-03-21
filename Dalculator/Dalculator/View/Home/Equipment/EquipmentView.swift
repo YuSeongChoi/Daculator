@@ -101,6 +101,7 @@ struct EquipmentView: View {
     @ViewBuilder
     private func itemImage(imageName: String, itemType: ItemType) -> some View {
         Button {
+//            viewModel.settingSetItemType(type: itemType)
             viewModel.settingItemType(type: itemType)
             itemToggle.toggle()
         } label: {

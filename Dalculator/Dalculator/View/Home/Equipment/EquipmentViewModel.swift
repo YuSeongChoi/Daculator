@@ -40,6 +40,7 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     @Published var selectedSupEquip: String = ""
     
     var itemDict = Dictionary<String, [ItemVOElement]>()
+    var itemSetDict = Dictionary<String, [ItemVOElement]>()
     var selectedItem: [ItemVOElement] = []
     
     // MARK: 직업 리스트 불러오기
@@ -75,18 +76,18 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
                     }
                 }
                 
-//                itemList.forEach { item in
-//                    guard let setName = item.setOf.first else { return }
-//                    if item.rarity != .epic || item.content == .illusion || item.itype == .sealstone || item.itype == .essence || item.itype == .creature {
-//                        return
-//                    }
-//                    if itemDict[setName] == nil {
-//                        itemDict[setName] = []
-//                        itemDict[setName]?.append(item)
-//                    } else {
-//                        itemDict[setName]?.append(item)
-//                    }
-//                }
+                itemList.forEach { item in
+                    guard let setName = item.setOf.first else { return }
+                    if item.rarity != .epic || item.content == .illusion || item.itype == .sealstone || item.itype == .essence || item.itype == .creature {
+                        return
+                    }
+                    if itemSetDict[setName] == nil {
+                        itemSetDict[setName] = []
+                        itemSetDict[setName]?.append(item)
+                    } else {
+                        itemSetDict[setName]?.append(item)
+                    }
+                }
             } else {
                 return
             }
@@ -136,13 +137,19 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         }
     }
     
+    // MARK: 세트 아이템 설정하기
+    func settingSetItemType(type: ItemType) {
+        itemSetDict.forEach { (name, item) in
+            let selected = item.filter({ $0.itype == type })
+            
+        }
+    }
+    
     // MARK: 장비 장착하기
     func equipItem(item: ItemVOElement) {
         guard let type = item.itype else { return }
-        WeaponType.allCases.forEach { weapon in
-            if weapon.rawValue == type.rawValue {
-                selectedWeapon = item.image
-            }
+        if type.bigType == .weapon {
+            selectedWeapon = item.image
         }
         if item.itype == .shoulder {
             selectedShoulder = item.image

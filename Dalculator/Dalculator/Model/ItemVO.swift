@@ -222,6 +222,33 @@ struct Give: Codable, Hashable {
     let when: String?
 }
 
+enum BigItemType: String, Codable, CaseIterable {
+    /// 장비
+    case equipment
+    /// 액세서리
+    case accessory
+    /// 무기
+    case weapon
+    /// 보조장비
+    case supequipt
+    /// 칭호
+    case title
+    /// 크리처
+    case creature
+    /// 봉인석
+    case sealstone
+    /// 정수
+    case essence
+    /// 카드
+    case card
+    /// 아티팩트
+    case artifcat
+    /// 무기아바타
+    case weaponavatar
+    /// 오라
+    case ora
+}
+
 enum ItemType: String, Codable, CaseIterable {
     /// 머리어깨
     case shoulder = "머리어깨"
@@ -314,63 +341,33 @@ enum ItemType: String, Codable, CaseIterable {
     case rocksword = "락소드"
     /// 윙블레이드
     case wingblade = "윙블레이드"
-}
-
-enum WeaponType: String, CaseIterable {
-    /// 건틀릿
-    case gauntlet = "건틀릿"
-    /// 너클
-    case nuckle = "너클"
-    /// 광검
-    case lightsword = "광검"
-    /// 대검
-    case bigsword = "대검"
-    /// 소검
-    case smallsword = "소검"
-    /// 도
-    case sword = "도"
-    /// 둔기
-    case bluntsword = "둔기"
-    /// 권투글러브
-    case glove = "권투글러브"
-    /// 클로
-    case claw = "클로"
-    /// 통파
-    case tonpa = "통파"
-    /// 리볼버
-    case revolver = "리볼버"
-    /// 머스켓
-    case muscket = "머스켓"
-    /// 보우건
-    case bowgun = "보우건"
-    /// 핸드캐넌
-    case handcannon = "핸드캐넌"
-    /// 자동권총
-    case autogun = "자동권총"
-    /// 낫
-    case sickle = "낫"
-    /// 배틀액스
-    case battleaxe = "배틀액스"
-    /// 십자가
-    case cross = "십자가"
-    /// 염주
-    case rosary = "염주"
-    /// 토템
-    case totem = "토템"
-    /// 로드
-    case lord = "로드"
-    /// 봉
-    case pole = "봉"
-    /// 스태프
-    case staff = "스태프"
-    /// 스탭
-    case stab = "스탭"
-    /// 빗자루
-    case broom = "빗자루"
-    /// 창
-    case spear = "창"
-    /// 락소드
-    case rocksword = "락소드"
-    /// 윙블레이드
-    case wingblade = "윙블레이드"
+    
+    var bigType: BigItemType {
+        switch self {
+        case .shoulder, .coat, .pants, .belt, .shoes:
+            return .equipment
+        case .necklace, .bracelet, .ring:
+            return .accessory
+        case .supequip:
+            return .supequipt
+        case .title:
+            return .title
+        case .creature:
+            return .creature
+        case .sealstone:
+            return .sealstone
+        case .essence:
+            return .essence
+        case .card:
+            return .card
+        case .artifact:
+            return .artifcat
+        case .weaponavavtar:
+            return .weaponavatar
+        case .ora:
+            return .ora
+        default:
+            return .weapon
+        }
+    }
 }
