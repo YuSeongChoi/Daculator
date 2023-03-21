@@ -66,6 +66,7 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
             if itemList.isEmpty {
                 itemList = result
                 initDefaultItem()
+                injectItemList()
                 
                 itemList.forEach { item in
                     if itemDict[item.name] == nil {
@@ -73,19 +74,6 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
                         itemDict[item.name]?.append(item)
                     } else {
                         itemDict[item.name]?.append(item)
-                    }
-                }
-                
-                itemList.forEach { item in
-                    guard let setName = item.setOf.first else { return }
-                    if item.rarity != .epic || item.content == .illusion || item.itype == .sealstone || item.itype == .essence || item.itype == .creature {
-                        return
-                    }
-                    if itemSetDict[setName] == nil {
-                        itemSetDict[setName] = []
-                        itemSetDict[setName]?.append(item)
-                    } else {
-                        itemSetDict[setName]?.append(item)
                     }
                 }
             } else {
@@ -105,6 +93,22 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
             itemSetList = result
         case .failure(let failure):
             print(failure.localizedDescription)
+        }
+    }
+    
+    // MARK: 세트 아이템 리스트 딕셔너리 넣기
+    func injectItemList() {
+        itemList.forEach { item in
+            guard let setName = item.setOf.first else { return }
+            if item.rarity != .epic || item.content == .illusion || item.itype == .sealstone || item.itype == .essence || item.itype == .creature {
+                return
+            }
+            if itemSetDict[setName] == nil {
+                itemSetDict[setName] = []
+                itemSetDict[setName]?.append(item)
+            } else {
+                itemSetDict[setName]?.append(item)
+            }
         }
     }
     
@@ -139,9 +143,16 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     
     // MARK: 세트 아이템 설정하기
     func settingSetItemType(type: ItemType) {
+        itemSetDict.removeAll()
+        injectItemList()
+        
         itemSetDict.forEach { (name, item) in
-            let selected = item.filter({ $0.itype == type })
-            
+            let selected = item.filter{ $0.itype?.bigType == type.bigType }
+            itemSetDict[name] = selected
+        }
+        
+        for (key, value) in itemSetDict where value.isEmpty {
+            itemSetDict.removeValue(forKey: key)
         }
     }
     
