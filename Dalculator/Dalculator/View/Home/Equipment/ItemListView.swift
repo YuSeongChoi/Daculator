@@ -19,7 +19,6 @@ struct ItemListView: View {
     var body: some View {
         ScrollView {
             Divider()
-            
             LazyVStack(alignment: .center, spacing: 15) {
                 ForEach(viewModel.itemSetDict.sorted{ $0.key < $1.key }, id: \.key) { key, items in
                     VStack(spacing: 10) {
@@ -28,6 +27,7 @@ struct ItemListView: View {
                             .onTapGesture {
                                 print(viewModel.itemSetDict[key]?.forEach({ item in
                                     print(item.name)
+                                    viewModel.equipItem(item: item)
                                 }))
                             }
                         HStack(spacing: 5) {
@@ -49,9 +49,7 @@ struct ItemListView: View {
                         }
                     }
                 }
-                
             }
-            
             partItemView()
         }
         .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
