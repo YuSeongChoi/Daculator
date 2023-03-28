@@ -17,7 +17,7 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     @Published var itemSetList: ItemSetVO = []
     
     /// 직업
-    @Published var selectedJob: String = ""
+    @Published var selectedJob: ChampionVOElement = .init(attrs: nil)
     /// 머리어깨
     @Published var selectedShoulder: String = ""
     /// 상의
@@ -50,8 +50,10 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         switch result {
         case .success(let result):
             championList = result
-            guard let job = championList.filter{ $0.name == "소드마스터" }.first else { return }
-            selectedJob = job.name
+            if selectedJob.name.isEmpty {
+                guard let job = championList.filter{ $0.name == "소드마스터" }.first else { return }
+                selectedJob = job
+            }
         case .failure(let failure):
             print(failure.localizedDescription)
         }
@@ -135,9 +137,21 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     func settingItemType(type: ItemType) {
         selectedItem.removeAll()
         
-        itemDict.forEach { (name, item) in
-            guard let selected = item.filter({ $0.itype == type }).first else { return }
-            selectedItem.append(selected)
+        if type.bigType == .weapon {
+            let weapons = selectedJob.weapons
+            itemDict.forEach{ (name, item) in
+                item.forEach { element in
+                    guard let elementType = element.itype?.rawValue else { return }
+                    if weapons.contains(elementType) {
+                        selectedItem.append(element)
+                    }
+                }
+            }
+        } else {
+            itemDict.forEach { (name, item) in
+                guard let selected = item.filter({ $0.itype == type }).first else { return }
+                selectedItem.append(selected)
+            }
         }
     }
     

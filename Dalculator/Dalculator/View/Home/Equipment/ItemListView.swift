@@ -24,12 +24,6 @@ struct ItemListView: View {
                     VStack(spacing: 10) {
                         Text(key)
                             .font(.system(size: 20, weight: .bold))
-                            .onTapGesture {
-                                print(viewModel.itemSetDict[key]?.forEach({ item in
-                                    print(item.name)
-                                    viewModel.equipItem(item: item)
-                                }))
-                            }
                         HStack(spacing: 5) {
                             ForEach(items, id: \.self) { item in
                                 VStack(alignment: .center) {
@@ -41,11 +35,13 @@ struct ItemListView: View {
                                         .foregroundColor(.gray)
                                 }
                                 .multilineTextAlignment(.center)
-                                .onTapGesture {
-                                    viewModel.equipItem(item: item)
-                                    presentationMode.wrappedValue.dismiss()
-                                }
                             }
+                        }
+                    }
+                    .onTapGesture {
+                        viewModel.itemSetDict[key]?.forEach { item in
+                            viewModel.equipItem(item: item)
+                            presentationMode.wrappedValue.dismiss()
                         }
                     }
                 }
@@ -67,6 +63,10 @@ struct ItemListView: View {
                         .foregroundColor(.gray)
                 }
                 .multilineTextAlignment(.center)
+                .onTapGesture {
+                    viewModel.equipItem(item: item)
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
         }
     }

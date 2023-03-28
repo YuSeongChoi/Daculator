@@ -7,19 +7,21 @@
 
 import Foundation
 
-//   let championVO = try? JSONDecoder().decode(ChampionVO.self, from: jsonData)
+import CodableWrappers
 
 typealias ChampionVO = [ChampionVOElement]
 // MARK: - ChampionVOElement
-struct ChampionVOElement: Codable, Hashable {    
-    let name: String
-    let atype: Atype
-    let weapons: [String]
+struct ChampionVOElement: Codable, Hashable {
+    @FallbackDecoding<EmptyString>
+    var name: String = ""
+    var atype: Atype = .physc
+    @FallbackDecoding<EmptyArray>
+    var weapons: [String] = []
     let attrs: Attrs?
     
     enum Atype: String, Codable {
-        case magic = "Magic"
         case physc = "Physc"
+        case magic = "Magic"
     }
 }
 

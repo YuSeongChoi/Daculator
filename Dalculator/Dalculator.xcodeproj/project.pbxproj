@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D73B02C29D178D300F283F0 /* dfclass.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D73B02B29D178D300F283F0 /* dfclass.json */; };
 		5D834EEC29C1876F000B1FBB /* CodableWrappers in Frameworks */ = {isa = PBXBuildFile; productRef = 5D834EEB29C1876F000B1FBB /* CodableWrappers */; };
 		5DABFBC429C4007E0062D867 /* SwiftUI+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABFBC329C4007E0062D867 /* SwiftUI+View.swift */; };
 		5DABFBC729C404F00062D867 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABFBC629C404F00062D867 /* ItemListView.swift */; };
@@ -27,7 +28,6 @@
 		5DAE140229C015DD00C323E2 /* HomeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE140129C015DD00C323E2 /* HomeMenuView.swift */; };
 		5DAE140529C0160000C323E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE140429C0160000C323E2 /* Constants.swift */; };
 		5DAE140929C02D2A00C323E2 /* armorbase.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAE140829C02D2A00C323E2 /* armorbase.json */; };
-		5DAE141029C02D5200C323E2 /* dfclass.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAE140A29C02D5200C323E2 /* dfclass.json */; };
 		5DAE141129C02D5200C323E2 /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAE140B29C02D5200C323E2 /* items.json */; };
 		5DAE141229C02D5200C323E2 /* left.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAE140D29C02D5200C323E2 /* left.json */; };
 		5DAE141329C02D5200C323E2 /* right.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAE140E29C02D5200C323E2 /* right.json */; };
@@ -64,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D73B02B29D178D300F283F0 /* dfclass.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = dfclass.json; path = "../../../../../../../Downloads/dfm-view-main/data/dfclass.json"; sourceTree = "<group>"; };
 		5DABFBC329C4007E0062D867 /* SwiftUI+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+View.swift"; sourceTree = "<group>"; };
 		5DABFBC629C404F00062D867 /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
 		5DABFBCC29C421B50062D867 /* ItemSetVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSetVO.swift; sourceTree = "<group>"; };
@@ -86,7 +87,6 @@
 		5DAE140129C015DD00C323E2 /* HomeMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuView.swift; sourceTree = "<group>"; };
 		5DAE140429C0160000C323E2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5DAE140829C02D2A00C323E2 /* armorbase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = armorbase.json; sourceTree = "<group>"; };
-		5DAE140A29C02D5200C323E2 /* dfclass.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dfclass.json; sourceTree = "<group>"; };
 		5DAE140B29C02D5200C323E2 /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
 		5DAE140D29C02D5200C323E2 /* left.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = left.json; sourceTree = "<group>"; };
 		5DAE140E29C02D5200C323E2 /* right.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = right.json; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 		5DAE0FCA29C0123700C323E2 /* Equipment */ = {
 			isa = PBXGroup;
 			children = (
-				5DAE140A29C02D5200C323E2 /* dfclass.json */,
+				5D73B02B29D178D300F283F0 /* dfclass.json */,
 				5DAE140829C02D2A00C323E2 /* armorbase.json */,
 				5DAE140B29C02D5200C323E2 /* items.json */,
 				5DAE140F29C02D5200C323E2 /* itemsets.json */,
@@ -477,7 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DAE141629C02E3F00C323E2 /* magicProps.json in Resources */,
-				5DAE141029C02D5200C323E2 /* dfclass.json in Resources */,
+				5D73B02C29D178D300F283F0 /* dfclass.json in Resources */,
 				5DAE0C2129BFFF0200C323E2 /* Preview Assets.xcassets in Resources */,
 				5DAE141229C02D5200C323E2 /* left.json in Resources */,
 				5DAE141429C02D5200C323E2 /* itemsets.json in Resources */,

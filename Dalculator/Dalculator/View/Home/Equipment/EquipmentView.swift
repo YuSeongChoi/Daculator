@@ -42,7 +42,7 @@ struct EquipmentView: View {
                             Button {
                                 jobToggle.toggle()
                             } label: {
-                                Image(viewModel.selectedJob)
+                                Image(viewModel.selectedJob.name)
                             }
                             .fullScreenCover(isPresented: $jobToggle) {
                                 FullScreenContentView {
@@ -54,7 +54,7 @@ struct EquipmentView: View {
                                             LazyVGrid(columns: columns) {
                                                 ForEach(viewModel.championList, id: \.self) { champion in
                                                     Button {
-                                                        viewModel.selectedJob = champion.name
+                                                        viewModel.selectedJob = champion
                                                         jobToggle.toggle()
                                                     } label: {
                                                         Image(champion.name)
