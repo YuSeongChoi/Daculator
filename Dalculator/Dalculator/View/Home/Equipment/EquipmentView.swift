@@ -11,7 +11,7 @@ import RswiftResources
 
 struct EquipmentView: View {
     
-    @StateObject private var viewModel = EquipmentViewModel()
+    @ObservedObject var viewModel:EquipmentViewModel
     
     @State private var jobToggle: Bool = false
     @State private var itemToggle: Bool = false

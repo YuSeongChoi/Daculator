@@ -51,7 +51,7 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         case .success(let result):
             championList = result
             if selectedJob.name.isEmpty {
-                guard let job = championList.filter{ $0.name == "소드마스터" }.first else { return }
+                guard let job = championList.filter({ $0.name == "소드마스터" }).first else { return }
                 selectedJob = job
             }
         case .failure(let failure):

@@ -7,14 +7,42 @@
 
 import SwiftUI
 
-struct BlacksmithView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+import RswiftResources
 
-struct BlacksmithView_Previews: PreviewProvider {
-    static var previews: some View {
-        BlacksmithView()
+struct BlacksmithView: View {
+    
+    @ObservedObject var viewModel: EquipmentViewModel
+    
+    var body: some View {
+        ScrollView {
+            ZStack(alignment: .top) {
+                R.image.bg.swiftImage
+                    .resizable()
+                
+                VStack(spacing: 20) {
+                    HStack(spacing: 5) {
+                        
+                    }
+                }
+            }
+        }
     }
+    
+    @ViewBuilder
+    private func itemImage(imageName: String, itemType: ItemType) -> some View {
+        Button {
+            
+        } label: {
+            R.image.epicBackground.swiftImage
+                .resizable()
+                .frame(width: 80, height: 80)
+                .overlay(
+                    Image(imageName)
+                        .resizable()
+                        .frame(width: 70, height: 70)
+                )
+                .cornerRadius(8)
+        }
+    }
+    
 }

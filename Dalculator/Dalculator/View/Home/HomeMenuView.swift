@@ -13,6 +13,7 @@ struct HomeMenuView: View {
     
     typealias TabItemType = Constants.MainTabItem
     @Namespace private var nameSpace
+    @StateObject private var viewModel = EquipmentViewModel()
     
     @State private var selection = TabItemType.equipment
     
@@ -44,9 +45,9 @@ struct HomeMenuView: View {
             .frame(height: 52)
             .animation(.linear, value: selection)
             TabView(selection: $selection) {
-                EquipmentView()
+                EquipmentView(viewModel: viewModel)
                     .tag(TabItemType.equipment)
-                BlacksmithView()
+                BlacksmithView(viewModel: viewModel)
                     .tag(TabItemType.blacksmith)
                 AvatarView()
                     .tag(TabItemType.avatar)
