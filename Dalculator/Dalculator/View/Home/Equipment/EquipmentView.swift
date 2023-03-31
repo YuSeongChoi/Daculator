@@ -34,7 +34,7 @@ struct EquipmentView: View {
                         HStack {
                             itemImage(imageName: viewModel.selectedCoat, itemType: .coat)
                             Spacer()
-                            itemImage(imageName: viewModel.selectedNecklace, itemType: .necklace)
+                            itemImage(imageName: viewModel.selectedBracelet, itemType: .bracelet)
                         }
                         HStack {
                             itemImage(imageName: viewModel.selectedPants, itemType: .pants)
@@ -66,7 +66,7 @@ struct EquipmentView: View {
                                 }
                             }
                             Spacer()
-                            itemImage(imageName: viewModel.selectedBracelet, itemType: .bracelet)
+                            itemImage(imageName: viewModel.selectedNecklace, itemType: .necklace)
                         }
                         HStack {
                             itemImage(imageName: viewModel.selectedBelt, itemType: .belt)

@@ -112,6 +112,9 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
                 itemSetDict[setName]?.append(item)
             }
         }
+        itemSetDict.sorted { (first, second) in
+            return first.key < second.key
+        }
     }
     
     // MARK: 초기장비 설정
