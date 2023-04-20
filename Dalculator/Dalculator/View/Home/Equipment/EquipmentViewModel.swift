@@ -5,9 +5,9 @@
 //  Created by YuSeongChoi on 2023/03/14.
 //
 
-import Foundation
+import SwiftUI
 
-import RswiftResources
+import DalculatorResources
 
 @MainActor
 final class EquipmentViewModel: ObservableObject, Identifiable {
@@ -17,27 +17,27 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     @Published var itemSetList: ItemSetVO = []
     
     /// 직업
-    @Published var selectedJob: ChampionVOElement = .init(attrs: nil)
+    @Published var selectedJob: ChampionVOElement = .init()
     /// 머리어깨
-    @Published var selectedShoulder: String = ""
+    @Published var selectedShoulder: ItemVOElement = .init(attrs: .init())
     /// 상의
-    @Published var selectedCoat: String = ""
+    @Published var selectedCoat: ItemVOElement = .init(attrs: .init())
     /// 하의
-    @Published var selectedPants: String = ""
+    @Published var selectedPants: ItemVOElement = .init(attrs: .init())
     /// 벨트
-    @Published var selectedBelt: String = ""
+    @Published var selectedBelt: ItemVOElement = .init(attrs: .init())
     /// 신발
-    @Published var selectedShoes: String = ""
+    @Published var selectedShoes: ItemVOElement = .init(attrs: .init())
     /// 무기
-    @Published var selectedWeapon: String = ""
+    @Published var selectedWeapon: ItemVOElement = .init(attrs: .init())
     /// 목걸이
-    @Published var selectedNecklace: String = ""
+    @Published var selectedNecklace: ItemVOElement = .init(attrs: .init())
     /// 팔찌
-    @Published var selectedBracelet: String = ""
+    @Published var selectedBracelet: ItemVOElement = .init(attrs: .init())
     /// 반지
-    @Published var selectedRing: String = ""
+    @Published var selectedRing: ItemVOElement = .init(attrs: .init())
     /// 보조장비
-    @Published var selectedSupEquip: String = ""
+    @Published var selectedSupEquip: ItemVOElement = .init(attrs: .init())
     
     var itemDict = Dictionary<String, [ItemVOElement]>()
     var itemSetDict = Dictionary<String, [ItemVOElement]>()
@@ -51,7 +51,7 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         case .success(let result):
             championList = result
             if selectedJob.name.isEmpty {
-                guard let job = championList.filter({ $0.name == "소드마스터" }).first else { return }
+                guard let job = championList.filter({ $0.name == "rangerM" }).first else { return }
                 selectedJob = job
             }
         case .failure(let failure):
@@ -126,7 +126,7 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
                     equipment.append(item)
                 }
             } else {
-                if item.name.contains("브왕가") || item.name.contains("혼철") {
+                if item.name.contains("브왕가") || item.name.contains("미완성") {
                     equipment.append(item)
                 }
             }
@@ -165,6 +165,7 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         
         itemSetDict.forEach { (name, item) in
             let selected = item.filter{ $0.itype?.bigType == type.bigType }
+            
             itemSetDict[name] = selected
         }
         
@@ -175,36 +176,35 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     
     // MARK: 장비 장착하기
     func equipItem(item: ItemVOElement) {
-        guard let type = item.itype else { return }
-        if type.bigType == .weapon {
-            selectedWeapon = item.image
+        if item.itype?.bigType == .weapon {
+            selectedWeapon = item
         }
         if item.itype == .shoulder {
-            selectedShoulder = item.image
+            selectedShoulder = item
         }
         if item.itype == .coat {
-            selectedCoat = item.image
+            selectedCoat = item
         }
         if item.itype == .pants {
-            selectedPants = item.image
+            selectedPants = item
         }
         if item.itype == .belt {
-            selectedBelt = item.image
+            selectedBelt = item
         }
         if item.itype == .shoes {
-            selectedShoes = item.image
+            selectedShoes = item
         }
         if item.itype == .necklace {
-            selectedNecklace = item.image
+            selectedNecklace = item
         }
         if item.itype == .bracelet {
-            selectedBracelet = item.image
+            selectedBracelet = item
         }
         if item.itype == .ring {
-            selectedRing = item.image
+            selectedRing = item
         }
         if item.itype == .supequip {
-            selectedSupEquip = item.image
+            selectedSupEquip = item
         }
     }
     

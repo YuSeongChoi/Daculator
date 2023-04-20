@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-import RswiftResources
+import DalculatorResources
 
 struct BlacksmithView: View {
     
@@ -24,18 +24,18 @@ struct BlacksmithView: View {
                 VStack(spacing: 20) {
                     VStack(spacing: 10) {
                         HStack(spacing: 5) {
-                            itemImage(imageName: viewModel.selectedShoulder, itemType: .shoulder)
-                            itemImage(imageName: viewModel.selectedCoat, itemType: .coat)
-                            itemImage(imageName: viewModel.selectedPants, itemType: .pants)
-                            itemImage(imageName: viewModel.selectedBelt, itemType: .belt)
-                            itemImage(imageName: viewModel.selectedShoes, itemType: .shoes)
+                            itemImage(item: viewModel.selectedShoulder)
+                            itemImage(item: viewModel.selectedCoat)
+                            itemImage(item: viewModel.selectedPants)
+                            itemImage(item: viewModel.selectedBelt)
+                            itemImage(item: viewModel.selectedShoes)
                         }
                         HStack(spacing: 5) {
-                            itemImage(imageName: viewModel.selectedWeapon, itemType: .sword)
-                            itemImage(imageName: viewModel.selectedNecklace, itemType: .necklace)
-                            itemImage(imageName: viewModel.selectedBracelet, itemType: .bracelet)
-                            itemImage(imageName: viewModel.selectedRing, itemType: .bracelet)
-                            itemImage(imageName: viewModel.selectedSupEquip, itemType: .supequip)
+                            itemImage(item: viewModel.selectedWeapon)
+                            itemImage(item: viewModel.selectedNecklace)
+                            itemImage(item: viewModel.selectedBracelet)
+                            itemImage(item: viewModel.selectedRing)
+                            itemImage(item: viewModel.selectedSupEquip)
                         }
                     }
                 }
@@ -45,7 +45,7 @@ struct BlacksmithView: View {
     }
     
     @ViewBuilder
-    private func itemImage(imageName: String, itemType: ItemType) -> some View {
+    private func itemImage(item: ItemVOElement) -> some View {
         Button {
             itemToggle.toggle()
         } label: {
@@ -53,7 +53,7 @@ struct BlacksmithView: View {
                 .resizable()
                 .frame(width: 60, height: 60)
                 .overlay(
-                    Image(imageName)
+                    Image(item.image, bundle: R.bundle)
                         .resizable()
                         .frame(width: 50, height: 50)
                 )

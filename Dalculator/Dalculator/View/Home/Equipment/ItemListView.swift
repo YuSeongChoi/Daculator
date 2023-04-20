@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-import RswiftResources
+import DalculatorResources
 
 struct ItemListView: View {
     
@@ -27,7 +27,7 @@ struct ItemListView: View {
                         HStack(spacing: 5) {
                             ForEach(items, id: \.self) { item in
                                 VStack(alignment: .center) {
-                                    Image(item.image)
+                                    Image(item.image, bundle: R.bundle)
                                         .cornerRadius(12)
                                     Text(item.name)
                                         .frame(width: 50)
@@ -56,7 +56,7 @@ struct ItemListView: View {
         LazyVGrid(columns: columns) {
             ForEach(viewModel.selectedItem, id: \.self) { item in
                 VStack {
-                    Image(item.image)
+                    Image(item.image, bundle: R.bundle)
                         .cornerRadius(12)
                     Text(item.name)
                         .font(.system(size: 10))

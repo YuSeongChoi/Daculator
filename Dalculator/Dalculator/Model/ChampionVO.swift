@@ -17,7 +17,7 @@ struct ChampionVOElement: Codable, Hashable {
     var atype: Atype = .physc
     @FallbackDecoding<EmptyArray>
     var weapons: [String] = []
-    let attrs: Attrs?
+    var attrs: Attrs? = nil
     
     enum Atype: String, Codable {
         case physc = "Physc"
@@ -27,8 +27,8 @@ struct ChampionVOElement: Codable, Hashable {
 
 // MARK: - Attrs
 struct Attrs: Codable, Hashable {
-    let eltype: Element?
-    let dualTrigger: Bool?
+    var eltype: Element?
+    var dualTrigger: Bool?
 
     enum CodingKeys: String, CodingKey {
         case eltype

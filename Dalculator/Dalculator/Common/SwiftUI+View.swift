@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-import RswiftResources
+import DalculatorResources
 
 struct FullScreenContentView<Content:View>: View {
     

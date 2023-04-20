@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-import RswiftResources
+import DalculatorResources
 
 struct HomeMenuView: View {
     

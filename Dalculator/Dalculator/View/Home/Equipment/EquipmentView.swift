@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-import RswiftResources
+import DalculatorResources
 
 struct EquipmentView: View {
     
@@ -25,24 +25,24 @@ struct EquipmentView: View {
                     .resizable()
                 
                 VStack(spacing: 20) {
-                    if !(viewModel.selectedShoes.isEmpty) {
+                    if !(viewModel.selectedShoes.image.isEmpty) {
                         HStack {
-                            itemImage(imageName: viewModel.selectedShoulder, itemType: .shoulder)
+                            itemImage(item: viewModel.selectedShoulder)
                             Spacer()
-                            itemImage(imageName: viewModel.selectedWeapon, itemType: .sword)
+                            itemImage(item: viewModel.selectedWeapon)
                         }
                         HStack {
-                            itemImage(imageName: viewModel.selectedCoat, itemType: .coat)
+                            itemImage(item: viewModel.selectedCoat)
                             Spacer()
-                            itemImage(imageName: viewModel.selectedBracelet, itemType: .bracelet)
+                            itemImage(item: viewModel.selectedBracelet)
                         }
                         HStack {
-                            itemImage(imageName: viewModel.selectedPants, itemType: .pants)
+                            itemImage(item: viewModel.selectedPants)
                             Spacer()
                             Button {
                                 jobToggle.toggle()
                             } label: {
-                                Image(viewModel.selectedJob.name)
+                                Image(viewModel.selectedJob.name, bundle: R.bundle)
                             }
                             .fullScreenCover(isPresented: $jobToggle) {
                                 FullScreenContentView {
@@ -57,7 +57,7 @@ struct EquipmentView: View {
                                                         viewModel.selectedJob = champion
                                                         jobToggle.toggle()
                                                     } label: {
-                                                        Image(champion.name)
+                                                        Image(champion.name, bundle: R.bundle)
                                                     }
                                                 }
                                             }
@@ -66,17 +66,17 @@ struct EquipmentView: View {
                                 }
                             }
                             Spacer()
-                            itemImage(imageName: viewModel.selectedNecklace, itemType: .necklace)
+                            itemImage(item: viewModel.selectedNecklace)
                         }
                         HStack {
-                            itemImage(imageName: viewModel.selectedBelt, itemType: .belt)
+                            itemImage(item: viewModel.selectedBelt)
                             Spacer()
-                            itemImage(imageName: viewModel.selectedRing, itemType: .ring)
+                            itemImage(item: viewModel.selectedRing)
                         }
                         HStack {
-                            itemImage(imageName: viewModel.selectedShoes, itemType: .shoes)
+                            itemImage(item: viewModel.selectedShoes)
                             Spacer()
-                            itemImage(imageName: viewModel.selectedSupEquip, itemType: .supequip)
+                            itemImage(item: viewModel.selectedSupEquip)
                         }
                     }
                 }
@@ -99,17 +99,18 @@ struct EquipmentView: View {
     }
     
     @ViewBuilder
-    private func itemImage(imageName: String, itemType: ItemType) -> some View {
+    private func itemImage(item: ItemVOElement) -> some View {
         Button {
-            viewModel.settingSetItemType(type: itemType)
-            viewModel.settingItemType(type: itemType)
+            guard let itype = item.itype else { return }
+            viewModel.settingSetItemType(type: itype)
+            viewModel.settingItemType(type: itype)
             itemToggle.toggle()
         } label: {
             R.image.epicBackground.swiftImage
                 .resizable()
                 .frame(width: 80, height: 80)
                 .overlay(
-                    Image(imageName)
+                    Image(item.image, bundle: R.bundle)
                         .resizable()
                         .frame(width: 70, height: 70)
                 )

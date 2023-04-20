@@ -7,14 +7,23 @@
 
 import SwiftUI
 
-struct SealView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+import DalculatorResources
 
-struct SealView_Previews: PreviewProvider {
-    static var previews: some View {
-        SealView()
+struct SealView: View {
+    
+    
+    
+    var body: some View {
+        ScrollView {
+            ZStack(alignment: .top) {
+                R.image.bg.swiftImage
+                    .resizable()
+                
+                VStack {
+                    
+                }
+            }
+        }
     }
+    
 }

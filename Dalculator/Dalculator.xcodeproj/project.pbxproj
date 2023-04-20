@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D834EEC29C1876F000B1FBB /* CodableWrappers in Frameworks */ = {isa = PBXBuildFile; productRef = 5D834EEB29C1876F000B1FBB /* CodableWrappers */; };
+		5D42F08229F0C0190059886F /* DalculatorResources in Frameworks */ = {isa = PBXBuildFile; productRef = 5D42F08129F0C0190059886F /* DalculatorResources */; };
+		5D42F08529F0C0FD0059886F /* CodableWrappers in Frameworks */ = {isa = PBXBuildFile; productRef = 5D42F08429F0C0FD0059886F /* CodableWrappers */; };
 		5DABFBC429C4007E0062D867 /* SwiftUI+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABFBC329C4007E0062D867 /* SwiftUI+View.swift */; };
 		5DABFBC729C404F00062D867 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABFBC629C404F00062D867 /* ItemListView.swift */; };
 		5DABFBCD29C421B50062D867 /* ItemSetVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABFBCC29C421B50062D867 /* ItemSetVO.swift */; };
@@ -21,15 +22,10 @@
 		5DAE0C4729C00A7600C323E2 /* WindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C4629C00A7600C323E2 /* WindowDelegate.swift */; };
 		5DAE0C4929C00A8000C323E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C4829C00A8000C323E2 /* AppDelegate.swift */; };
 		5DAE0C5029C00DD100C323E2 /* SwiftUI+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C4F29C00DD100C323E2 /* SwiftUI+Resources.swift */; };
-		5DAE0C5329C00F5F00C323E2 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 5DAE0C5229C00F5F00C323E2 /* RswiftLibrary */; };
 		5DAE0C5729C0101000C323E2 /* MainRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE0C5629C0101000C323E2 /* MainRootView.swift */; };
 		5DAE140029C015D800C323E2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE13FF29C015D800C323E2 /* SettingView.swift */; };
 		5DAE140229C015DD00C323E2 /* HomeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE140129C015DD00C323E2 /* HomeMenuView.swift */; };
 		5DAE140529C0160000C323E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE140429C0160000C323E2 /* Constants.swift */; };
-		5DAE140929C02D2A00C323E2 /* armorbase.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAE140829C02D2A00C323E2 /* armorbase.json */; };
-		5DAE141129C02D5200C323E2 /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAE140B29C02D5200C323E2 /* items.json */; };
-		5DAE141429C02D5200C323E2 /* itemsets.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAE140F29C02D5200C323E2 /* itemsets.json */; };
-		5DAE141629C02E3F00C323E2 /* magicProps.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAE141529C02E3F00C323E2 /* magicProps.json */; };
 		5DAE141C29C0350C00C323E2 /* ShapeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE141B29C0350C00C323E2 /* ShapeStyle.swift */; };
 		5DAE141E29C0366300C323E2 /* EquipmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE141D29C0366300C323E2 /* EquipmentView.swift */; };
 		5DAE142129C0367400C323E2 /* BlacksmithView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE142029C0367400C323E2 /* BlacksmithView.swift */; };
@@ -41,9 +37,6 @@
 		5DAE143729C04B3C00C323E2 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE143629C04B3C00C323E2 /* FileLoader.swift */; };
 		5DAE143B29C05E9800C323E2 /* ItemVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE143A29C05E9800C323E2 /* ItemVO.swift */; };
 		5DAE144129C157BD00C323E2 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE144029C157BD00C323E2 /* Convenience.swift */; };
-		5DE7F3B429E3D1070044AE10 /* dfclass.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DE7F3B129E3D1070044AE10 /* dfclass.json */; };
-		5DE7F3B929E3D1300044AE10 /* right.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DE7F3B729E3D1300044AE10 /* right.json */; };
-		5DE7F3BA29E3D1300044AE10 /* left.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DE7F3B829E3D1300044AE10 /* left.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,10 +78,6 @@
 		5DAE13FF29C015D800C323E2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		5DAE140129C015DD00C323E2 /* HomeMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuView.swift; sourceTree = "<group>"; };
 		5DAE140429C0160000C323E2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		5DAE140829C02D2A00C323E2 /* armorbase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = armorbase.json; sourceTree = "<group>"; };
-		5DAE140B29C02D5200C323E2 /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
-		5DAE140F29C02D5200C323E2 /* itemsets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = itemsets.json; sourceTree = "<group>"; };
-		5DAE141529C02E3F00C323E2 /* magicProps.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = magicProps.json; sourceTree = "<group>"; };
 		5DAE141B29C0350C00C323E2 /* ShapeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeStyle.swift; sourceTree = "<group>"; };
 		5DAE141D29C0366300C323E2 /* EquipmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentView.swift; sourceTree = "<group>"; };
 		5DAE142029C0367400C323E2 /* BlacksmithView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlacksmithView.swift; sourceTree = "<group>"; };
@@ -101,9 +90,7 @@
 		5DAE143629C04B3C00C323E2 /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 		5DAE143A29C05E9800C323E2 /* ItemVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVO.swift; sourceTree = "<group>"; };
 		5DAE144029C157BD00C323E2 /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
-		5DE7F3B129E3D1070044AE10 /* dfclass.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dfclass.json; sourceTree = "<group>"; };
-		5DE7F3B729E3D1300044AE10 /* right.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = right.json; sourceTree = "<group>"; };
-		5DE7F3B829E3D1300044AE10 /* left.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = left.json; sourceTree = "<group>"; };
+		5DE7F3BF29E3FC430044AE10 /* DalculatorResources */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DalculatorResources; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DAE0C5329C00F5F00C323E2 /* RswiftLibrary in Frameworks */,
-				5D834EEC29C1876F000B1FBB /* CodableWrappers in Frameworks */,
+				5D42F08229F0C0190059886F /* DalculatorResources in Frameworks */,
+				5D42F08529F0C0FD0059886F /* CodableWrappers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,13 +120,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D42F03229E7C30A0059886F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5DAE0C0C29BFFEFF00C323E2 = {
 			isa = PBXGroup;
 			children = (
+				5DE7F3BC29E3FB9B0044AE10 /* Packages */,
 				5DAE0C1729BFFEFF00C323E2 /* Dalculator */,
 				5DAE0C2929BFFF0200C323E2 /* DalculatorTests */,
 				5DAE0C3329BFFF0200C323E2 /* DalculatorUITests */,
 				5DAE0C1629BFFEFF00C323E2 /* Products */,
+				5D42F03229E7C30A0059886F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -219,7 +215,6 @@
 		5DAE0C4529C008E400C323E2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				5DAE0FCA29C0123700C323E2 /* Equipment */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -259,19 +254,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		5DAE0FCA29C0123700C323E2 /* Equipment */ = {
-			isa = PBXGroup;
-			children = (
-				5DE7F3B129E3D1070044AE10 /* dfclass.json */,
-				5DAE140829C02D2A00C323E2 /* armorbase.json */,
-				5DAE140B29C02D5200C323E2 /* items.json */,
-				5DAE140F29C02D5200C323E2 /* itemsets.json */,
-				5DAE141529C02E3F00C323E2 /* magicProps.json */,
-				5DAE140C29C02D5200C323E2 /* sets */,
-			);
-			path = Equipment;
-			sourceTree = "<group>";
-		};
 		5DAE13FD29C015CB00C323E2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,15 +281,6 @@
 				5DAE140429C0160000C323E2 /* Constants.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		5DAE140C29C02D5200C323E2 /* sets */ = {
-			isa = PBXGroup;
-			children = (
-				5DE7F3B829E3D1300044AE10 /* left.json */,
-				5DE7F3B729E3D1300044AE10 /* right.json */,
-			);
-			path = sets;
 			sourceTree = "<group>";
 		};
 		5DAE141929C034F800C323E2 /* Common */ = {
@@ -363,6 +336,14 @@
 			path = Blacksmith;
 			sourceTree = "<group>";
 		};
+		5DE7F3BC29E3FB9B0044AE10 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				5DE7F3BF29E3FC430044AE10 /* DalculatorResources */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -377,12 +358,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				5DAE0C5529C00F8400C323E2 /* PBXTargetDependency */,
 			);
 			name = Dalculator;
 			packageProductDependencies = (
-				5DAE0C5229C00F5F00C323E2 /* RswiftLibrary */,
-				5D834EEB29C1876F000B1FBB /* CodableWrappers */,
+				5D42F08129F0C0190059886F /* DalculatorResources */,
+				5D42F08429F0C0FD0059886F /* CodableWrappers */,
 			);
 			productName = Dalculator;
 			productReference = 5DAE0C1529BFFEFF00C323E2 /* Dalculator.app */;
@@ -457,8 +437,7 @@
 			);
 			mainGroup = 5DAE0C0C29BFFEFF00C323E2;
 			packageReferences = (
-				5DAE0C5129C00F5F00C323E2 /* XCRemoteSwiftPackageReference "R" */,
-				5D834EEA29C1876F000B1FBB /* XCRemoteSwiftPackageReference "CodableWrappers" */,
+				5D42F08329F0C0FD0059886F /* XCRemoteSwiftPackageReference "CodableWrappers" */,
 			);
 			productRefGroup = 5DAE0C1629BFFEFF00C323E2 /* Products */;
 			projectDirPath = "";
@@ -476,14 +455,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DE7F3B929E3D1300044AE10 /* right.json in Resources */,
-				5DAE141629C02E3F00C323E2 /* magicProps.json in Resources */,
-				5DE7F3BA29E3D1300044AE10 /* left.json in Resources */,
-				5DE7F3B429E3D1070044AE10 /* dfclass.json in Resources */,
 				5DAE0C2129BFFF0200C323E2 /* Preview Assets.xcassets in Resources */,
-				5DAE141429C02D5200C323E2 /* itemsets.json in Resources */,
-				5DAE141129C02D5200C323E2 /* items.json in Resources */,
-				5DAE140929C02D2A00C323E2 /* armorbase.json in Resources */,
 				5DAE0C1D29BFFF0200C323E2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,10 +536,6 @@
 			isa = PBXTargetDependency;
 			target = 5DAE0C1429BFFEFF00C323E2 /* Dalculator */;
 			targetProxy = 5DAE0C3129BFFF0200C323E2 /* PBXContainerItemProxy */;
-		};
-		5DAE0C5529C00F8400C323E2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 5DAE0C5429C00F8400C323E2 /* RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -689,7 +657,7 @@
 				CODE_SIGN_ENTITLEMENTS = Dalculator/Dalculator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Dalculator/Resources/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = Y3SM86Y3Q4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -728,7 +696,7 @@
 				CODE_SIGN_ENTITLEMENTS = Dalculator/Dalculator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Dalculator/Resources/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = Y3SM86Y3Q4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -891,7 +859,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5D834EEA29C1876F000B1FBB /* XCRemoteSwiftPackageReference "CodableWrappers" */ = {
+		5D42F08329F0C0FD0059886F /* XCRemoteSwiftPackageReference "CodableWrappers" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/GottaGetSwifty/CodableWrappers";
 			requirement = {
@@ -899,30 +867,17 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		5DAE0C5129C00F5F00C323E2 /* XCRemoteSwiftPackageReference "R" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mac-cain13/R.swift";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5D834EEB29C1876F000B1FBB /* CodableWrappers */ = {
+		5D42F08129F0C0190059886F /* DalculatorResources */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5D834EEA29C1876F000B1FBB /* XCRemoteSwiftPackageReference "CodableWrappers" */;
+			productName = DalculatorResources;
+		};
+		5D42F08429F0C0FD0059886F /* CodableWrappers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D42F08329F0C0FD0059886F /* XCRemoteSwiftPackageReference "CodableWrappers" */;
 			productName = CodableWrappers;
-		};
-		5DAE0C5229C00F5F00C323E2 /* RswiftLibrary */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5DAE0C5129C00F5F00C323E2 /* XCRemoteSwiftPackageReference "R" */;
-			productName = RswiftLibrary;
-		};
-		5DAE0C5429C00F8400C323E2 /* RswiftGenerateInternalResources */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = "plugin:RswiftGenerateInternalResources";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

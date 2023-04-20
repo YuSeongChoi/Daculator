@@ -7,13 +7,13 @@
 
 import Foundation
 
-import RswiftResources
+import DalculatorResources
 
 final class FileLoader {
     
     static func load(file fileName: String) -> Data? {
         do {
-            guard let fileLocation = Bundle.main.url(forResource: fileName, withExtension: "json") else { return nil }
+            guard let fileLocation = R.file.bundle.url(forResource: fileName, withExtension: "json") else { return nil }
             return try Data(contentsOf: fileLocation)
         } catch {
             print(error.localizedDescription)

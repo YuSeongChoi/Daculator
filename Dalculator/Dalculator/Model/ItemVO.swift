@@ -27,7 +27,7 @@ struct ItemVOElement: Codable, Hashable {
     @FallbackDecoding<EmptyArray>
     var setOf: [String] = []
     /// 장비 옵션
-    let attrs: ChampionVOAttrs
+    var attrs: ChampionVOAttrs
     /// 장비 아이디
     @FallbackDecoding<EmptyInt>
     var id: Int = 0
@@ -35,11 +35,11 @@ struct ItemVOElement: Codable, Hashable {
     @FallbackDecoding<EmptyString>
     var image: String = ""
     /// 공격 옵션 발동 조건 및 효과
-    let branch: [Branch]?
+    var branch: [Branch]?
     /// 시너지 옵션 발동 조건 및 효과
-    let gives: [Give]?
+    var gives: [Give]?
     /// 솔라리스 무기 옵션
-    let exclusive: [Exclusive]?
+    var exclusive: [Exclusive]?
     /// 솔라리스 오즈마 환영극단 2막
     var content: ItemContentType?
     /// 윈드시어
@@ -77,28 +77,28 @@ struct ItemVOElement: Codable, Hashable {
 
 // MARK: - ChampionVOAttrs
 struct ChampionVOAttrs: Codable, Hashable {
-    let atkPh, atkMg, strInc, intInc: Int?
-    let strn, intl: Int?
-    let speedCast: Double?
-    let critMgPct, accu: Int?
-    let misc: [String]?
-    let dmgInc, dmgAdd, defPh, defMg: Int?
-    let accuPct, critPhPct, vit: Int?
-    let speedAtk: Double?
-    let eltype: Elementtype?
-    let elLght, elFire, elIce, elDark: Int?
-    let resFire, atkPhInc, atkMgInc, psi: Int?
-    let skLV, skbAdd: [String: Int]?
-    let critPh, cdmgInc, critMg, hpmax: Int?
-    let mpmax: Int?
-    let speedMove: Double?
-    let resIce, defPhPct, defMgPct, eldmgFire: Int?
-    let eldmgIce, skInc: Int?
-    let skHit: [String: Int]?
-    let skCool: SkCool?
-    let skVal: [String: Int]?
-    let resLght, resDark, eldmgLght, targetDef: Int?
-    let eldmgDark: Int?
+    var atkPh, atkMg, strInc, intInc: Int?
+    var strn, intl: Int?
+    var speedCast: Double?
+    var critMgPct, accu: Int?
+    var misc: [String]?
+    var dmgInc, dmgAdd, defPh, defMg: Int?
+    var accuPct, critPhPct, vit: Int?
+    var speedAtk: Double?
+    var eltype: Elementtype?
+    var elLght, elFire, elIce, elDark: Int?
+    var resFire, atkPhInc, atkMgInc, psi: Int?
+    var skLV, skbAdd: [String: Int]?
+    var critPh, cdmgInc, critMg, hpmax: Int?
+    var mpmax: Int?
+    var speedMove: Double?
+    var resIce, defPhPct, defMgPct, eldmgFire: Int?
+    var eldmgIce, skInc: Int?
+    var skHit: [String: Int]?
+    var skCool: SkCool?
+    var skVal: [String: Int]?
+    var resLght, resDark, eldmgLght, targetDef: Int?
+    var eldmgDark: Int?
 
     enum CodingKeys: String, CodingKey {
         case atkPh = "atk_ph"
@@ -160,21 +160,21 @@ struct ChampionVOAttrs: Codable, Hashable {
 
 // MARK: - SkCool
 struct SkCool: Codable, Hashable {
-    let all: Int
+    var all: Int
 }
 
 // MARK: - Branch
 struct Branch: Codable, Hashable {
-    let when: String
-    let attrs: [String: Double]
-    let maxRepeat: Int?
+    var when: String
+    var attrs: [String: Double]
+    var maxRepeat: Int?
 }
 
 // MARK: - Exclusive
 struct Exclusive: Codable, Hashable {
-    let name: ExclusiveName
-    let label: Label
-    let children: [Child]
+    var name: ExclusiveName
+    var label: Label
+    var children: [Child]
     
     enum ExclusiveName: String, Codable {
         case hp = "HP"
@@ -189,8 +189,8 @@ struct Exclusive: Codable, Hashable {
 
 // MARK: - Child
 struct Child: Codable, Hashable {
-    let name: ChildName
-    let attrs: ChildAttrs
+    var name: ChildName
+    var attrs: ChildAttrs
     
     enum ChildName: String, Codable {
         case the80미만 = "80% 미만"
@@ -202,8 +202,8 @@ struct Child: Codable, Hashable {
 
 // MARK: - ChildAttrs
 struct ChildAttrs: Codable, Hashable {
-    let dmgAdd, atkPhInc, atkMgInc, elFire: Int?
-    let elIce, elLght, elDark: Int?
+    var dmgAdd, atkPhInc, atkMgInc, elFire: Int?
+    var elIce, elLght, elDark: Int?
 
     enum CodingKeys: String, CodingKey {
         case dmgAdd = "dmg_add"
@@ -218,8 +218,8 @@ struct ChildAttrs: Codable, Hashable {
 
 // MARK: - Give
 struct Give: Codable, Hashable {
-    let attrs: [String: Int]
-    let when: String?
+    var attrs: [String: Int]
+    var when: String?
 }
 
 enum BigItemType: String, Codable, CaseIterable {
