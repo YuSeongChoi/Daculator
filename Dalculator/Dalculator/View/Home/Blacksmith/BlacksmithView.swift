@@ -46,18 +46,24 @@ struct BlacksmithView: View {
     
     @ViewBuilder
     private func itemImage(item: ItemVOElement) -> some View {
-        Button {
-            itemToggle.toggle()
-        } label: {
-            R.image.epicBackground.swiftImage
-                .resizable()
-                .frame(width: 60, height: 60)
-                .overlay(
-                    Image(item.image, bundle: R.bundle)
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                )
-                .cornerRadius(8)
+        VStack {
+            Button {
+                itemToggle.toggle()
+            } label: {
+                R.image.epicBackground.swiftImage
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .overlay(
+                        Image(item.image, bundle: R.bundle)
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                    )
+                    .cornerRadius(8)
+            }
+            
+            Text("\(item.itype?.rawValue ?? "")")
+                .foregroundColor(.white)
+                .font(R.font.notoSansCJKkrRegular.swiftFontOfSize(14))
         }
     }
     
