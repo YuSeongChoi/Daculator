@@ -23,7 +23,7 @@ struct BlacksmithView: View {
                 
                 VStack(spacing: 20) {
                     VStack(spacing: 10) {
-                        HStack(spacing: 5) {
+                        HStack(spacing: 5	) {
                             itemImage(item: viewModel.selectedShoulder)
                             itemImage(item: viewModel.selectedCoat)
                             itemImage(item: viewModel.selectedPants)
@@ -40,6 +40,14 @@ struct BlacksmithView: View {
                     }
                 }
                 .padding(EdgeInsets(top: 30, leading: 20, bottom: 20, trailing: 20))
+                .background(Group {
+                    NavigationLink(isActive: $itemToggle) {
+                        ItemListView(viewModel: viewModel)
+                            .navigationTitle("장비 선택")
+                    } label: {
+                        EmptyView()
+                    }
+                })
             }
         }
     }
@@ -48,6 +56,9 @@ struct BlacksmithView: View {
     private func itemImage(item: ItemVOElement) -> some View {
         VStack {
             Button {
+                guard let itype = item.itype else { return }
+                viewModel.settingSetItemType(type: itype)
+                viewModel.settingItemType(type: itype)
                 itemToggle.toggle()
             } label: {
                 R.image.epicBackground.swiftImage
