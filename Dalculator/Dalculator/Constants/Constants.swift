@@ -10,13 +10,16 @@ import Foundation
 enum Constants {
     
     enum HomeTabItem: String, Hashable {
-        case home
+        case equipment
+        case blacksmith
         case setting
         
         var title: String {
             switch self {
-            case .home:
-                return "홈"
+            case .equipment:
+                return "장비"
+            case .blacksmith:
+                return "대장간"
             case .setting:
                 return "설정"
             }

@@ -11,15 +11,22 @@ struct MainRootView: View {
     
     typealias TabItemType = Constants.HomeTabItem
     
-    @State private var tabSelection: TabItemType = .home
+    @State private var tabSelection: TabItemType = .equipment
     
     var body: some View {
         TabView(selection: $tabSelection) {
-            HomeMenuView()
-                .tag(TabItemType.home)
+            EquipmentView()
+                .tag(TabItemType.equipment)
                 .tabItem {
-                    Label("홈", systemImage: "house.fill")
+                    Label("장비", systemImage: "house.fill")
                 }
+            
+            BlacksmithView()
+                .tag(TabItemType.blacksmith)
+                .tabItem {
+                    Label("대장간", systemImage: "person")
+                }
+                
             
             SettingView()
                 .tag(TabItemType.setting)
