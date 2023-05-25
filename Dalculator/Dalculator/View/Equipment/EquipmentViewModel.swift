@@ -15,6 +15,9 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     @Published var championList: ChampionVO = []
     @Published var itemList: ItemVO = []
     @Published var itemSetList: ItemSetVO = []
+    @Published var alertItem: AlertProvider?
+    
+    var taskStorage: Set<Task<Void,Never>> = []
     
     /// 직업
     @Published var selectedJob: ChampionVOElement = .init()
@@ -119,20 +122,72 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     
     // MARK: 초기장비 설정
     func initDefaultItem() {
-        var equipment: [ItemVOElement] = []
-        itemList.forEach { item in
-            if let setName = item.setOf.first {
-                if setName.contains("예언자") || setName.contains("새벽") {
-                    equipment.append(item)
-                }
-            } else {
-                if item.name.contains("브왕가") || item.name.contains("미완성") {
-                    equipment.append(item)
+        // MARK: UserDefault 디폴트 세팅
+        if let _ = UserDefaults.standard.object(forKey: UserItemType.shoulder.rawValue) as? Data {
+            UserItemType.allCases.forEach { decodeUserDefault(name: $0.rawValue) }
+        } else {
+            var equipment: [ItemVOElement] = []
+            itemList.forEach { item in
+                if let setName = item.setOf.first {
+                    if setName.contains("예언자") || setName.contains("새벽") {
+                        equipment.append(item)
+                    }
+                } else {
+                    if item.name.contains("브왕가") || item.name.contains("미완성") {
+                        equipment.append(item)
+                    }
                 }
             }
+            equipment.forEach { item in
+                equipItem(item: item)
+            }
+            UserItemType.allCases.forEach{ encodeUserDefault(itemType: $0) }
         }
-        equipment.forEach { item in
-            equipItem(item: item)
+    }
+    
+    func encodeUserDefault(itemType: UserItemType) {
+        let encoder: JSONEncoder = JSONEncoder()
+        var encodedData = Data()
+        switch itemType {
+        case .shoulder:
+            guard let encoded = try? encoder.encode(selectedShoulder) else { return }
+            encodedData = encoded
+        case .coat:
+            guard let encoded = try? encoder.encode(selectedCoat) else { return }
+            encodedData = encoded
+        case .pants:
+            guard let encoded = try? encoder.encode(selectedPants) else { return }
+            encodedData = encoded
+        case .belt:
+            guard let encoded = try? encoder.encode(selectedBelt) else { return }
+            encodedData = encoded
+        case .shoes:
+            guard let encoded = try? encoder.encode(selectedShoes) else { return }
+            encodedData = encoded
+        case .weapon:
+            guard let encoded = try? encoder.encode(selectedWeapon) else { return }
+            encodedData = encoded
+        case .bracelet:
+            guard let encoded = try? encoder.encode(selectedBracelet) else { return  }
+            encodedData = encoded
+        case .necklace:
+            guard let encoded = try? encoder.encode(selectedNecklace) else { return }
+            encodedData = encoded
+        case .ring:
+            guard let encoded = try? encoder.encode(selectedRing) else { return }
+            encodedData = encoded
+        case .supequip:
+            guard let encoded = try? encoder.encode(selectedSupEquip) else { return }
+            encodedData = encoded
+        }
+        UserDefaults.standard.set(encodedData, forKey: itemType.rawValue)
+    }
+    
+    func decodeUserDefault(name: String) {
+        let decoder: JSONDecoder = JSONDecoder()
+        if let data = UserDefaults.standard.object(forKey: name) as? Data,
+           let decodedItem = try? decoder.decode(ItemVOElement.self, from: data) {
+            equipItem(item: decodedItem)
         }
     }
     
@@ -177,34 +232,57 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     func equipItem(item: ItemVOElement) {
         if item.itype?.bigType == .weapon {
             selectedWeapon = item
+            encodeUserDefault(itemType: .weapon)
         }
         if item.itype == .shoulder {
             selectedShoulder = item
+            encodeUserDefault(itemType: .shoulder)
         }
         if item.itype == .coat {
             selectedCoat = item
+            encodeUserDefault(itemType: .coat)
         }
         if item.itype == .pants {
             selectedPants = item
+            encodeUserDefault(itemType: .pants)
         }
         if item.itype == .belt {
             selectedBelt = item
+            encodeUserDefault(itemType: .belt)
         }
         if item.itype == .shoes {
             selectedShoes = item
+            encodeUserDefault(itemType: .shoes)
         }
         if item.itype == .necklace {
             selectedNecklace = item
+            encodeUserDefault(itemType: .necklace)
         }
         if item.itype == .bracelet {
             selectedBracelet = item
+            encodeUserDefault(itemType: .bracelet)
         }
         if item.itype == .ring {
             selectedRing = item
+            encodeUserDefault(itemType: .ring)
         }
         if item.itype == .supequip {
             selectedSupEquip = item
+            encodeUserDefault(itemType: .supequip)
         }
     }
     
+}
+
+enum UserItemType: String, CaseIterable {
+    case shoulder
+    case coat
+    case pants
+    case belt
+    case shoes
+    case weapon
+    case bracelet
+    case necklace
+    case ring
+    case supequip
 }

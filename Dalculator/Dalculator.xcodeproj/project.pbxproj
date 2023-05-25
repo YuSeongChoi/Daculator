@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D2AA4782A1CB3CA001274C2 /* UserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2AA4772A1CB3CA001274C2 /* UserCoordinator.swift */; };
+		5D2AA47C2A1F4654001274C2 /* BlacksmithViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2AA47B2A1F4654001274C2 /* BlacksmithViewModel.swift */; };
 		5D42F08229F0C0190059886F /* DalculatorResources in Frameworks */ = {isa = PBXBuildFile; productRef = 5D42F08129F0C0190059886F /* DalculatorResources */; };
 		5D42F08529F0C0FD0059886F /* CodableWrappers in Frameworks */ = {isa = PBXBuildFile; productRef = 5D42F08429F0C0FD0059886F /* CodableWrappers */; };
 		5DABFBC429C4007E0062D867 /* SwiftUI+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABFBC329C4007E0062D867 /* SwiftUI+View.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		5D2AA4772A1CB3CA001274C2 /* UserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoordinator.swift; sourceTree = "<group>"; };
+		5D2AA47B2A1F4654001274C2 /* BlacksmithViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlacksmithViewModel.swift; sourceTree = "<group>"; };
 		5DABFBC329C4007E0062D867 /* SwiftUI+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+View.swift"; sourceTree = "<group>"; };
 		5DABFBC629C404F00062D867 /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
 		5DABFBCC29C421B50062D867 /* ItemSetVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSetVO.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				5DAE142029C0367400C323E2 /* BlacksmithView.swift */,
+				5D2AA47B2A1F4654001274C2 /* BlacksmithViewModel.swift */,
 			);
 			name = Blacksmith;
 			path = Equipment/Blacksmith;
@@ -461,6 +464,7 @@
 				5DAE141C29C0350C00C323E2 /* ShapeStyle.swift in Sources */,
 				5DAE142A29C038FE00C323E2 /* ChampionVO.swift in Sources */,
 				5D2AA4782A1CB3CA001274C2 /* UserCoordinator.swift in Sources */,
+				5D2AA47C2A1F4654001274C2 /* BlacksmithViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

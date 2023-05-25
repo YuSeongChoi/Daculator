@@ -25,6 +25,7 @@ struct ItemListView: View {
                         VStack(spacing: 10) {
                             Text(key)
                                 .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.white)
                             HStack(spacing: 5) {
                                 ForEach(items, id: \.self) { item in
                                     VStack(alignment: .center) {
@@ -33,7 +34,7 @@ struct ItemListView: View {
                                         Text(item.name)
                                             .frame(width: 50)
                                             .font(.system(size: 10))
-                                            .foregroundColor(.gray)
+                                            .foregroundColor(.white)
                                     }
                                     .multilineTextAlignment(.center)
                                 }
@@ -52,6 +53,7 @@ struct ItemListView: View {
             }
             .padding(.vertical, 1)
         }
+        .background(R.image.bg.swiftImage.resizable())
     }
     
     @ViewBuilder
@@ -63,7 +65,7 @@ struct ItemListView: View {
                         .cornerRadius(12)
                     Text(item.name)
                         .font(.system(size: 10))
-                        .foregroundColor(.gray)
+                        .foregroundColor(.white)
                 }
                 .multilineTextAlignment(.center)
                 .onTapGesture {
