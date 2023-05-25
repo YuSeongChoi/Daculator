@@ -10,7 +10,7 @@ import SwiftUI
 struct MainRootView: View {
     
     typealias TabItemType = Constants.HomeTabItem
-    
+    @StateObject private var coordinator = UserCoordinator()
     @State private var tabSelection: TabItemType = .equipment
     
     var body: some View {
@@ -33,7 +33,9 @@ struct MainRootView: View {
                 .tabItem {
                     Label("설정", systemImage: "gearshape")
                 }
-        }.accentColor(.black)
+        }
+        .accentColor(.black)
+        .environmentObject(coordinator)
     }
     
 }

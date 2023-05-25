@@ -11,6 +11,7 @@ import DalculatorResources
 
 struct BlacksmithView: View {
     
+    @EnvironmentObject private var userCoordinator: UserCoordinator
     @StateObject private var viewModel = EquipmentViewModel()
     
     @State private var itemToggle: Bool = false
@@ -28,26 +29,18 @@ struct BlacksmithView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                itemInfoView(item: viewModel.selectedShoulder, forceLevel: $shoulderForce)
-                itemInfoView(item: viewModel.selectedCoat, forceLevel: $coatForce)
-                itemInfoView(item: viewModel.selectedPants, forceLevel: $pantsForce)
-                itemInfoView(item: viewModel.selectedBelt, forceLevel: $beltForce)
-                itemInfoView(item: viewModel.selectedShoes, forceLevel: $shoesForce)
-                itemInfoView(item: viewModel.selectedWeapon, forceLevel: $weaponForce)
-                itemInfoView(item: viewModel.selectedNecklace, forceLevel: $necklaceForce)
-                itemInfoView(item: viewModel.selectedBracelet, forceLevel: $braceletForce)
-                itemInfoView(item: viewModel.selectedRing, forceLevel: $ringForce)
-                itemInfoView(item: viewModel.selectedSupEquip, forceLevel: $supequipForce)
+                itemInfoView(item: userCoordinator.userShoulder.item, forceLevel: $shoulderForce)
+                itemInfoView(item: userCoordinator.userCoat.item, forceLevel: $coatForce)
+                itemInfoView(item: userCoordinator.userPants.item, forceLevel: $pantsForce)
+                itemInfoView(item: userCoordinator.userBelt.item, forceLevel: $beltForce)
+                itemInfoView(item: userCoordinator.userShoes.item, forceLevel: $shoesForce)
+                itemInfoView(item: userCoordinator.userWeapon.item, forceLevel: $weaponForce)
+                itemInfoView(item: userCoordinator.userNecklace.item, forceLevel: $necklaceForce)
+                itemInfoView(item: userCoordinator.userNecklace.item, forceLevel: $braceletForce)
+                itemInfoView(item: userCoordinator.userRing.item, forceLevel: $ringForce)
+                itemInfoView(item: userCoordinator.userSupEquip.item, forceLevel: $supequipForce)
             }
             .padding(EdgeInsets(top: 30, leading: 20, bottom: 20, trailing: 20))
-            .background(Group {
-                NavigationLink(isActive: $itemToggle) {
-                    ItemListView(viewModel: viewModel)
-                        .navigationTitle("장비 선택")
-                } label: {
-                    EmptyView()
-                }
-            })
         }
         .padding(.vertical, 1)
         .background(R.image.bg.swiftImage.resizable())
@@ -57,22 +50,16 @@ struct BlacksmithView: View {
     private func itemInfoView(item: ItemVOElement, forceLevel: Binding<String>) -> some View {
         HStack(spacing: 5) {
             VStack {
-                Button {
-                    guard let itype = item.itype else { return }
-                    viewModel.settingSetItemType(type: itype)
-                    viewModel.settingItemType(type: itype)
-                    itemToggle.toggle()
-                } label: {
-                    R.image.epicBackground.swiftImage
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .overlay(
-                            Image(item.image, bundle: R.bundle)
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                        )
-                        .cornerRadius(8)
-                }
+                R.image.epicBackground.swiftImage
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .overlay(
+                        Image(item.image, bundle: R.bundle)
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                    )
+                    .cornerRadius(8)
+                
                 Text("\(item.itype?.rawValue ?? "")")
                     .frame(alignment: .leading)
                     .foregroundColor(.white)

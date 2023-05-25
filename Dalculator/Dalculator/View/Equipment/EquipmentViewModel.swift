@@ -165,7 +165,6 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         
         itemSetDict.forEach { (name, item) in
             let selected = item.filter{ $0.itype?.bigType == type.bigType }
-            
             itemSetDict[name] = selected
         }
         

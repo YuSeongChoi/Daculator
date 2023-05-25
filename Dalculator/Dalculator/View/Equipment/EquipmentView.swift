@@ -11,6 +11,7 @@ import DalculatorResources
 
 struct EquipmentView: View {
     
+    @EnvironmentObject private var userCoordinator: UserCoordinator
     @StateObject private var viewModel = EquipmentViewModel()
     
     @State private var jobToggle: Bool = false
@@ -93,6 +94,9 @@ struct EquipmentView: View {
             viewModel.loadItemList()
             viewModel.loadItemSetList()
         }
+        .onDisappear {
+            syncItemData()
+        }
     }
     
     @ViewBuilder
@@ -113,6 +117,23 @@ struct EquipmentView: View {
                 )
                 .cornerRadius(8)
         }
+    }
+    
+}
+
+extension EquipmentView {
+    
+    private func syncItemData() {
+        userCoordinator.userShoulder.item = viewModel.selectedShoulder
+        userCoordinator.userCoat.item = viewModel.selectedCoat
+        userCoordinator.userPants.item = viewModel.selectedPants
+        userCoordinator.userBelt.item = viewModel.selectedBelt
+        userCoordinator.userShoes.item = viewModel.selectedShoes
+        userCoordinator.userWeapon.item = viewModel.selectedWeapon
+        userCoordinator.userBracelet.item = viewModel.selectedBracelet
+        userCoordinator.userNecklace.item = viewModel.selectedNecklace
+        userCoordinator.userRing.item = viewModel.selectedRing
+        userCoordinator.userSupEquip.item = viewModel.selectedSupEquip
     }
     
 }

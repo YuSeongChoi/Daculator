@@ -10,6 +10,7 @@ import Foundation
 import CodableWrappers
 
 typealias ChampionVO = [ChampionVOElement]
+
 // MARK: - ChampionVOElement
 struct ChampionVOElement: Codable, Hashable {
     @FallbackDecoding<EmptyString>

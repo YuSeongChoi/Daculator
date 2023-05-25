@@ -17,38 +17,41 @@ struct ItemListView: View {
     let columns: [GridItem] = [GridItem(.adaptive(minimum: 80))]
     
     var body: some View {
-        ScrollView {
+        VStack(spacing: 0) {
             Divider()
-            LazyVStack(alignment: .center, spacing: 15) {
-                ForEach(viewModel.itemSetDict.sorted{ $0.key < $1.key }, id: \.key) { key, items in
-                    VStack(spacing: 10) {
-                        Text(key)
-                            .font(.system(size: 20, weight: .bold))
-                        HStack(spacing: 5) {
-                            ForEach(items, id: \.self) { item in
-                                VStack(alignment: .center) {
-                                    Image(item.image, bundle: R.bundle)
-                                        .cornerRadius(12)
-                                    Text(item.name)
-                                        .frame(width: 50)
-                                        .font(.system(size: 10))
-                                        .foregroundColor(.gray)
+            ScrollView {
+                LazyVStack(alignment: .center, spacing: 15) {
+                    ForEach(viewModel.itemSetDict.sorted{ $0.key < $1.key }, id: \.key) { key, items in
+                        VStack(spacing: 10) {
+                            Text(key)
+                                .font(.system(size: 20, weight: .bold))
+                            HStack(spacing: 5) {
+                                ForEach(items, id: \.self) { item in
+                                    VStack(alignment: .center) {
+                                        Image(item.image, bundle: R.bundle)
+                                            .cornerRadius(12)
+                                        Text(item.name)
+                                            .frame(width: 50)
+                                            .font(.system(size: 10))
+                                            .foregroundColor(.gray)
+                                    }
+                                    .multilineTextAlignment(.center)
                                 }
-                                .multilineTextAlignment(.center)
+                            }
+                        }
+                        .onTapGesture {
+                            viewModel.itemSetDict[key]?.forEach { item in
+                                viewModel.equipItem(item: item)
+                                presentationMode.wrappedValue.dismiss()
                             }
                         }
                     }
-                    .onTapGesture {
-                        viewModel.itemSetDict[key]?.forEach { item in
-                            viewModel.equipItem(item: item)
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                    }
+                    partItemView()
                 }
+                .padding(.vertical, 15)
             }
-            partItemView()
+            .padding(.vertical, 1)
         }
-        .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
     }
     
     @ViewBuilder

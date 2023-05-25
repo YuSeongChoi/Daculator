@@ -11,7 +11,12 @@ import CodableWrappers
 
 typealias ItemVO = [ItemVOElement]
 
-// MARK: - ChampionVOElement
+struct UserItemVO: Codable, Hashable {
+    var item: ItemVOElement = .init(attrs: .init())
+    var itemForce: Int = 0
+    var forcePoint: Int64 = 0
+}
+
 struct ItemVOElement: Codable, Hashable {
     /// 이름
     @FallbackDecoding<EmptyString>
