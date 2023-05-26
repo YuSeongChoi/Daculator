@@ -63,6 +63,9 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         } else {
             itemDict.forEach { (name, item) in
                 guard let selected = item.filter({ $0.itype == type }).first else { return }
+                if (!selected.who.isEmpty && selected.who.first != selectedJob.name) {
+                    return
+                }
                 selectedItem.append(selected)
             }
         }
@@ -188,7 +191,7 @@ extension EquipmentViewModel {
     func injectItemList() {
         itemList.forEach { item in
             guard let setName = item.setOf.first else { return }
-            if item.rarity != .epic || item.content?.first == .illusion || item.itype == .sealstone || item.itype == .essence || item.itype == .creature {
+            if item.rarity != .epic || (item.content?.first == .illusion && item.who.first != selectedJob.name) || item.itype == .sealstone || item.itype == .essence || item.itype == .creature {
                 return
             }
             if itemSetDict[setName] == nil {
