@@ -26,34 +26,19 @@ struct BlacksmithView: View {
     @State private var ringForce: String = ""
     @State private var supequipForce: String = ""
     
-    let columns: [GridItem] = [GridItem(.adaptive(minimum: 80))]
-    
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns) {
-                itemInfoView(item: userCoordinator.userShoulder.item, forceLevel: $shoulderForce)
-                itemInfoView(item: userCoordinator.userCoat.item, forceLevel: $coatForce)
-                itemInfoView(item: userCoordinator.userPants.item, forceLevel: $pantsForce)
-                itemInfoView(item: userCoordinator.userBelt.item, forceLevel: $beltForce)
-                itemInfoView(item: userCoordinator.userShoes.item, forceLevel: $shoesForce)
-                itemInfoView(item: userCoordinator.userWeapon.item, forceLevel: $weaponForce)
-                itemInfoView(item: userCoordinator.userNecklace.item, forceLevel: $necklaceForce)
-                itemInfoView(item: userCoordinator.userNecklace.item, forceLevel: $braceletForce)
-                itemInfoView(item: userCoordinator.userRing.item, forceLevel: $ringForce)
-                itemInfoView(item: userCoordinator.userSupEquip.item, forceLevel: $supequipForce)
-            }
-            
             VStack(spacing: 10) {
-                itemInfoView(item: userCoordinator.userShoulder.item, forceLevel: $shoulderForce)
-                itemInfoView(item: userCoordinator.userCoat.item, forceLevel: $coatForce)
-                itemInfoView(item: userCoordinator.userPants.item, forceLevel: $pantsForce)
-                itemInfoView(item: userCoordinator.userBelt.item, forceLevel: $beltForce)
-                itemInfoView(item: userCoordinator.userShoes.item, forceLevel: $shoesForce)
-                itemInfoView(item: userCoordinator.userWeapon.item, forceLevel: $weaponForce)
-                itemInfoView(item: userCoordinator.userNecklace.item, forceLevel: $necklaceForce)
-                itemInfoView(item: userCoordinator.userNecklace.item, forceLevel: $braceletForce)
-                itemInfoView(item: userCoordinator.userRing.item, forceLevel: $ringForce)
-                itemInfoView(item: userCoordinator.userSupEquip.item, forceLevel: $supequipForce)
+                itemInfoView(item: userCoordinator.userShoulder.item, forceLevel: userCoordinator.userShoulder.itemForce)
+                itemInfoView(item: userCoordinator.userCoat.item, forceLevel: userCoordinator.userCoat.itemForce)
+                itemInfoView(item: userCoordinator.userPants.item, forceLevel: userCoordinator.userPants.itemForce)
+                itemInfoView(item: userCoordinator.userBelt.item, forceLevel: userCoordinator.userBelt.itemForce)
+                itemInfoView(item: userCoordinator.userShoes.item, forceLevel: userCoordinator.userShoes.itemForce)
+                itemInfoView(item: userCoordinator.userWeapon.item, forceLevel: userCoordinator.userWeapon.itemForce)
+                itemInfoView(item: userCoordinator.userBracelet.item, forceLevel: userCoordinator.userBracelet.itemForce)
+                itemInfoView(item: userCoordinator.userNecklace.item, forceLevel: userCoordinator.userNecklace.itemForce)
+                itemInfoView(item: userCoordinator.userRing.item, forceLevel: userCoordinator.userRing.itemForce)
+                itemInfoView(item: userCoordinator.userSupEquip.item, forceLevel: userCoordinator.userSupEquip.itemForce)
             }
             .padding(EdgeInsets(top: 30, leading: 20, bottom: 20, trailing: 20))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -68,23 +53,29 @@ struct BlacksmithView: View {
     }
     
     @ViewBuilder
-    private func itemInfoView(item: ItemVOElement, forceLevel: Binding<String>) -> some View {
-        ZStack {
-            R.image.epicBackground.swiftImage
-                .resizable()
-                .frame(width: 90, height: 90)
-                .overlay(
-                    Image(item.image, bundle: R.bundle)
-                        .resizable()
-                        .frame(width: 80, height: 80)
-                )
-                .cornerRadius(8)
+    private func itemInfoView(item: ItemVOElement, forceLevel: Int) -> some View {
+        HStack {
+            ZStack {
+                R.image.epicBackground.swiftImage
+                    .resizable()
+                    .frame(width: 90, height: 90)
+                    .overlay(
+                        Image(item.image, bundle: R.bundle)
+                            .resizable()
+                            .frame(width: 80, height: 80)
+                    )
+                    .cornerRadius(8)
+                
+                Text("\(forceLevel)")
+                    .foregroundColor(.white)
+                    .font(R.font.notoSansCJKkrBold.swiftFontOfSize(14))
+            }
             
             Text("\(item.itype?.rawValue ?? "")")
-                .frame(alignment: .bottomTrailing)
                 .foregroundColor(.white)
                 .font(R.font.notoSansCJKkrRegular.swiftFontOfSize(14))
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
 }

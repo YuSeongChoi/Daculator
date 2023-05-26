@@ -32,6 +32,7 @@ struct ItemSetVOElement: Codable, Hashable {
 struct Set2: Codable, Hashable {
     let attrs: Set2_Attrs
     let name: String
+    let misc: [String]?
 }
 
 // MARK: - Set2_Attrs
@@ -40,7 +41,7 @@ struct Set2_Attrs: Codable, Hashable {
     let skLV: [String: Int]?
     let hpmax, mpmax, defPh, defMg: Int?
     let resFire: Int?
-    let eltype: String?
+    let eltype: [String]?
     let speedMove, targetDef: Int?
     let misc: [String]?
     let speedAtk, speedCast: Int?
@@ -63,10 +64,11 @@ struct Set2_Attrs: Codable, Hashable {
 
 // MARK: - Set3
 struct Set3: Codable, Hashable {
-    let attrs: Set3_Attrs?
     let name: String
+    let attrs: Set3_Attrs?
     let exclusive: [Set3_Exclusive]?
     let branch: [Set3_Branch]?
+    let misc: [String]?
 }
 
 // MARK: - Set3_Attrs
@@ -106,7 +108,7 @@ struct Set3_Attrs: Codable, Hashable {
 
 // MARK: - Set3_Branch
 struct Set3_Branch: Codable, Hashable {
-    let when: String
+    let pick: String
     let attrs: PurpleAttrs
 }
 
@@ -121,15 +123,15 @@ struct PurpleAttrs: Codable, Hashable {
     }
 }
 
-// MARK: - The3_Exclusive
+// MARK: - Set3_Exclusive
 struct Set3_Exclusive: Codable, Hashable {
-    let name, label: String
+    let pickSet: String
     let children: [PurpleChild]
 }
 
 // MARK: - PurpleChild
 struct PurpleChild: Codable, Hashable {
-    let name: String
+    let pick: String
     let attrs: FluffyAttrs
 }
 
@@ -166,7 +168,7 @@ struct Set4_Attrs: Codable, Hashable {
 
 // MARK: - Set4_Branch
 struct Set4_Branch: Codable, Hashable {
-    let when: String
+    let pick: String
     let attrs: TentacledAttrs
 }
 
@@ -186,6 +188,7 @@ struct Set5: Codable, Hashable {
     let attrs: Set5_Attrs
     let gives: [SetOptions]?
     let exclusive: [Set5_Exclusive]?
+    let misc: [String]?
 }
 
 // MARK: - Set5_Attrs
@@ -246,7 +249,7 @@ struct SkLV: Codable, Hashable {
 
 // MARK: - The5_Branch
 struct Set5_Branch: Codable, Hashable {
-    let when: String
+    let pick: String
     let attrs: StickyAttrs
 }
 
@@ -263,13 +266,13 @@ struct StickyAttrs: Codable, Hashable {
 
 // MARK: - Set5_Exclusive
 struct Set5_Exclusive: Codable, Hashable {
-    let name, label: String
+    let pickSet: String
     let children: [FluffyChild]
 }
 
 // MARK: - FluffyChild
 struct FluffyChild: Codable, Hashable {
-    let name: String
+    let pick: String
     let attrs: IndigoAttrs
 }
 
@@ -311,6 +314,7 @@ struct SetOptionsAttrs: Codable, Hashable {
 struct Set8: Codable, Hashable {
     let attrs: Set8_Attrs
     let name: String
+    let misc: [String]?
 }
 
 // MARK: - Set8_Attrs
@@ -344,5 +348,11 @@ struct SkHit: Codable, Hashable {
 
 // MARK: - SkbAdd
 struct SkbAdd: Codable, Hashable {
-    let 카이: Int
+    let 고대의도서관: Double?
+    let 카이: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case 고대의도서관 = "고대의 도서관"
+        case 카이
+    }
 }

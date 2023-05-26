@@ -80,7 +80,7 @@ struct EquipmentView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(EdgeInsets(top: 30, leading: 20, bottom: 20, trailing: 20))
+        .padding(.horizontal, 20)
         .background(Group {
             NavigationLink(isActive: $itemToggle) {
                 ItemListView(viewModel: viewModel)
@@ -112,15 +112,22 @@ struct EquipmentView: View {
             syncItemData()
             itemToggle.toggle()
         } label: {
-            R.image.epicBackground.swiftImage
-                .resizable()
-                .frame(width: 80, height: 80)
-                .overlay(
-                    Image(item.image, bundle: R.bundle)
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                )
-                .cornerRadius(8)
+            ZStack {
+                R.image.epicBackground.swiftImage
+                    .resizable()
+                    .frame(width: 80, height: 80)
+                    .overlay(
+                        Image(item.image, bundle: R.bundle)
+                            .resizable()
+                            .frame(width: 70, height: 70)
+                    )
+                    .cornerRadius(8)
+                
+                Text("\(item.itype?.rawValue ?? "")")
+                    .frame(alignment: .bottomTrailing)
+                    .foregroundColor(.white)
+                    .font(R.font.notoSansCJKkrRegular.swiftFontOfSize(14))
+            }
         }
     }
     
