@@ -9,7 +9,6 @@ import SwiftUI
 
 import DalculatorResources
 
-// TODO: UserDefaults에 유저정보 저장
 struct EquipmentView: View {
     
     @EnvironmentObject private var userCoordinator: UserCoordinator
@@ -52,6 +51,9 @@ struct EquipmentView: View {
                                         ForEach(viewModel.championList, id: \.self) { champion in
                                             Button {
                                                 viewModel.selectedJob = champion
+                                                let encoder: JSONEncoder = JSONEncoder()
+                                                guard let encoded = try? encoder.encode(viewModel.selectedJob) else { return }
+                                                UserDefaults.standard.set(encoded, forKey: "job")
                                                 jobToggle.toggle()
                                             } label: {
                                                 Image(champion.name, bundle: R.bundle)

@@ -53,10 +53,7 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         switch result {
         case .success(let result):
             championList = result
-            if selectedJob.name.isEmpty {
-                guard let job = championList.filter({ $0.name == "rangerM" }).first else { return }
-                selectedJob = job
-            }
+            initDefaultJob()
         case .failure(let failure):
             print(failure.localizedDescription)
         }
@@ -120,11 +117,26 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         }
     }
     
+    // MARK: 초기 직업 설정
+    func initDefaultJob() {
+        let decoder: JSONDecoder = JSONDecoder()
+        if let data = UserDefaults.standard.object(forKey: "job") as? Data,
+           let decoded = try? decoder.decode(ChampionVOElement.self, from: data) {
+            selectedJob = decoded
+        }
+        if selectedJob.name.isEmpty {
+            guard let job = championList.filter({ $0.name == "rangerM" }).first else { return }
+            selectedJob = job
+            let encoder: JSONEncoder = JSONEncoder()
+            guard let encoded = try? encoder.encode(selectedJob) else { return }
+            UserDefaults.standard.set(encoded, forKey: "job")
+        }
+    }
+    
     // MARK: 초기장비 설정
     func initDefaultItem() {
-        // MARK: UserDefault 디폴트 세팅
         if let _ = UserDefaults.standard.object(forKey: UserItemType.shoulder.rawValue) as? Data {
-            UserItemType.allCases.forEach { decodeUserDefault(name: $0.rawValue) }
+            UserItemType.allCases.forEach { loadUserItem(name: $0.rawValue) }
         } else {
             var equipment: [ItemVOElement] = []
             itemList.forEach { item in
@@ -141,11 +153,12 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
             equipment.forEach { item in
                 equipItem(item: item)
             }
-            UserItemType.allCases.forEach{ encodeUserDefault(itemType: $0) }
+            UserItemType.allCases.forEach{ saveUserItem(itemType: $0) }
         }
     }
     
-    func encodeUserDefault(itemType: UserItemType) {
+    // MARK: 유저 Item 저장
+    func saveUserItem(itemType: UserItemType) {
         let encoder: JSONEncoder = JSONEncoder()
         var encodedData = Data()
         switch itemType {
@@ -183,7 +196,8 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
         UserDefaults.standard.set(encodedData, forKey: itemType.rawValue)
     }
     
-    func decodeUserDefault(name: String) {
+    // MARK: 유저 아이템 불러오기
+    func loadUserItem(name: String) {
         let decoder: JSONDecoder = JSONDecoder()
         if let data = UserDefaults.standard.object(forKey: name) as? Data,
            let decodedItem = try? decoder.decode(ItemVOElement.self, from: data) {
@@ -232,43 +246,43 @@ final class EquipmentViewModel: ObservableObject, Identifiable {
     func equipItem(item: ItemVOElement) {
         if item.itype?.bigType == .weapon {
             selectedWeapon = item
-            encodeUserDefault(itemType: .weapon)
+            saveUserItem(itemType: .weapon)
         }
         if item.itype == .shoulder {
             selectedShoulder = item
-            encodeUserDefault(itemType: .shoulder)
+            saveUserItem(itemType: .shoulder)
         }
         if item.itype == .coat {
             selectedCoat = item
-            encodeUserDefault(itemType: .coat)
+            saveUserItem(itemType: .coat)
         }
         if item.itype == .pants {
             selectedPants = item
-            encodeUserDefault(itemType: .pants)
+            saveUserItem(itemType: .pants)
         }
         if item.itype == .belt {
             selectedBelt = item
-            encodeUserDefault(itemType: .belt)
+            saveUserItem(itemType: .belt)
         }
         if item.itype == .shoes {
             selectedShoes = item
-            encodeUserDefault(itemType: .shoes)
+            saveUserItem(itemType: .shoes)
         }
         if item.itype == .necklace {
             selectedNecklace = item
-            encodeUserDefault(itemType: .necklace)
+            saveUserItem(itemType: .necklace)
         }
         if item.itype == .bracelet {
             selectedBracelet = item
-            encodeUserDefault(itemType: .bracelet)
+            saveUserItem(itemType: .bracelet)
         }
         if item.itype == .ring {
             selectedRing = item
-            encodeUserDefault(itemType: .ring)
+            saveUserItem(itemType: .ring)
         }
         if item.itype == .supequip {
             selectedSupEquip = item
-            encodeUserDefault(itemType: .supequip)
+            saveUserItem(itemType: .supequip)
         }
     }
     
